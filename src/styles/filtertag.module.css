@@ -1,0 +1,17 @@
+
+
+.pill{
+    background-color: royalblue;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.active:hover{
+    cursor: pointer;
+}
+

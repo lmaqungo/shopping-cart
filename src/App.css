@@ -1,0 +1,86 @@
+
+.body{
+  width: 100%; 
+  padding: 24px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex{
+  display: flex;
+}
+
+.left, .right{
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-gap{
+  gap: 20px;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+
+.main-content{
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  text-align: center;
+  width: 60%;
+}
+
+#shop-btn{
+  align-self: center;
+  padding: 6px 12px;
+  background-color: transparent;
+  border-radius: 6px;
+  border: 1px solid slategray;
+  cursor: pointer;
+}
+
+.search{
+  position: relative;
+  flex-shrink: 0;
+}
+
+.search input{
+  padding: 12px 36px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(202, 200, 200);
+}
+
+.search .search-icon{
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  pointer-events: none;
+}
+
+
+.nav-link{
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-link:hover{
+  padding-bottom: inherit;
+  border-bottom: 2px solid black;
+}
+
+.nav-link:visited{
+  color:inherit;
+}
+
+

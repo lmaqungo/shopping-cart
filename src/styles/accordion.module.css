@@ -1,0 +1,41 @@
+
+.accordion{
+    width: 208px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.accordion:hover{
+  cursor: pointer;
+}
+
+.upper{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flip-dropdown-up{
+    transform: rotate(180deg);
+}
+
+.flip-dropdown-down{
+    transform: rotate(0deg);
+}
+
+.children-show{
+    animation: slideDown 0.4s forwards;
+}
+
+.children-hide{
+    display: none;
+}
+
+@keyframes slideDown{
+  from {
+    transform: translateY(-10%);
+  }
+  to{
+    transform: translateY(0%);
+  }
+}

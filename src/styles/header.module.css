@@ -1,0 +1,59 @@
+
+.flex{
+    display: flex;
+}
+
+.section{
+    composes: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-gap{
+    composes: flex;
+    gap: 20px;
+}
+
+.logo{
+  text-decoration: none;
+}
+
+.logo:visited{
+  color: inherit
+}
+
+.nav-link{
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.nav-link:hover{
+  padding-bottom: inherit;
+  border-bottom: 2px solid black;
+}
+
+.nav-link:visited{
+  color:inherit;
+}
+
+.search{
+  position: relative;
+  flex-shrink: 0;
+}
+
+.search-icon{
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  pointer-events: none;
+}
+
+.search input{
+  padding: 12px 36px;
+  border: none;
+  border-radius: 20px;
+  background-color: rgb(202, 200, 200);
+  font-size: 16px;
+  font-weight: bold;
+}
