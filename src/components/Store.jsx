@@ -57,8 +57,15 @@ const Store = () => {
   const { currentItemID } = useParams();
   const [currentItem, currentItemIndex] = findObj(currentItemID, items);
 
-  useEffect(()=> console.log(`selected type: ${selectedType}`), 
-    [selectedType]
+  // useEffect(()=> console.log(`selected type: ${selectedType}`), 
+  //   [selectedType]
+  // )
+
+  useEffect(()=>{
+    selectedEffects.forEach((effect, index)=>
+      console.log(`${index+1}. ${effect}`)
+    )
+  }
   )
   
   function updateTypes() {
@@ -131,7 +138,7 @@ const Store = () => {
   const renderCards = () => {
     let cards = [];
     (filterIsApplied()) ? cards = ( items.map(item=>
-      (item.type===selectedType || (intersectionExists(selectedEffects, item.effects) || intersectionExists(selectedFlavours, item.flavours))) && <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+      (item.type===selectedType && (intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))) && <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
     )
 
     ) : cards = (items.map(item=>

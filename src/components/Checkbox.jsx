@@ -6,33 +6,33 @@ import { deleteItemFromArray } from '../utils/utils'
 
 const Checkbox = ({ label='default label', type='multi-click', uniClickHandler, isClickedUni, parent, parentArraySetter, parentArray }) => {
 
-    const [isClicked, setIsClicked] = useState(false);
+    const [isClicked, setIsClicked] = useState(initialCheckValue());
+
+    function initialCheckValue(){
+      if(parentArray) {
+        return parentArray.includes(label) 
+      }
+      else{
+        return false
+      }
+    }
 
     useEffect(()=>{
       if(parent==='effects' || parent==='flavours'){
         if(isClicked){
-          parentArraySetter(prevArr=>{
-            if(prevArr){
-              const newArr = [...prevArr]; 
-              if(!prevArr.includes(label)){
-                newArr.push(label)
-              }
-              return newArr;
-            }
-          })
+          const newArr = [...parentArray]; 
+          if(!parentArray.includes(label)){
+            newArr.push(label);
+          }
+          parentArraySetter(newArr);
         } 
 
-        // else if(!isClicked){
-        //   parentArraySetter(prevArr=>{
-        //     if(prevArr){
-        //       if(prevArr.includes(label)){
-        //         return deleteItemFromArray(prevArr, label)
-        //       }else{
-        //         return prevArr
-        //       }
-        //     }
-        //   })
-        // }
+        else if(!isClicked){
+          const newArr = [...parentArray]; 
+          if(newArr.includes(label)){
+            parentArraySetter(deleteItemFromArray(newArr, label))
+          } 
+        }
 
       }
     }, 
