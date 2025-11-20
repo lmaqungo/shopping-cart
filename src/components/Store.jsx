@@ -9,7 +9,7 @@ import TypesMenu from "./TypesMenu";
 import EffectsMenu from "./EffectsMenu";
 import FlavoursMenu from "./FlavoursMenu";
 import FilterTag from "./FilterTag";
-import { intersectionExists } from "../utils/utils";
+import { intersectionExists, validateType } from "../utils/utils";
 import Item from "./Item";
 import { useParams, useLocation, useOutletContext } from "react-router";
 import { findObj } from "../utils/utils";
@@ -53,9 +53,12 @@ const Store = () => {
   
   const [favourites, setFavourites] = useState([]);
 
-  const location = useLocation();
-  const { currentItemID } = useParams();
-  const [currentItem, currentItemIndex] = findObj(currentItemID, items);
+  const [filteredItems, setFilteredItems] = useState([]); 
+
+
+  const location = useLocation();  
+  const { currentItemID } = useParams();  
+  const [currentItem, currentItemIndex] = findObj(currentItemID, items);  
 
   // useEffect(()=> console.log(`selected type: ${selectedType}`), 
   //   [selectedType]
@@ -73,6 +76,7 @@ const Store = () => {
   }
 
   function updateEffects(){
+    setSelectedType, 
     items.forEach(item=> 
       item.effects.forEach(effect=>
         !effects.includes(effect) && effects.push(effect)
@@ -88,6 +92,13 @@ const Store = () => {
     )
   }
 
+  function updateFilteredItems(){
+    const filteredItems =  
+    items.filter(item=>
+      validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours)
+    )
+    setFilteredItems(filteredItems); 
+  }; 
 
   const renderTypeTags = () =>{
     return(
@@ -122,7 +133,7 @@ const Store = () => {
   }
 
   const filterIsApplied = () => {
-    return (selectedType ||selectedEffects.length>0 || selectedFlavours.length>0)
+    return (selectedType || selectedEffects.length>0 || selectedFlavours.length>0)
   }
 
   const renderTags = () => {
@@ -138,7 +149,7 @@ const Store = () => {
   const renderCards = () => {
     let cards = [];
     (filterIsApplied()) ? cards = ( items.map(item=>
-      (item.type===selectedType && (intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))) && <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+      ((validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))) && <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
     )
 
     ) : cards = (items.map(item=>
@@ -146,6 +157,9 @@ const Store = () => {
     ))
 
     return cards
+    /* 
+    now that we have the filters working correctly, if filters are applied, append the items to an array using them, then map those items to the cards. So if the array is empty, we can display the whole 'items don't exist' also so we can update the items count in the header   
+    */
 
   }
 

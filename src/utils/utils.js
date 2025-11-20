@@ -18,7 +18,15 @@ const intersectionExists = (filters, target)=> {
     if(filters.length>0){
         return filters.every(filter => target.includes(filter))
     }else{
-        return false;
+        return true;
+    }
+}
+
+const validateType = (filterValue, property)=> {
+    if(filterValue){
+        return filterValue === property
+    }else{
+        return true
     }
 }
 
@@ -39,20 +47,21 @@ const arrayIncludesObj = (obj, objArr) =>{
 }
 
 const tests = () => {
-    const obj = {id:789, str:"caterpillar"}; 
+    const target = ["happy", "hungry", "relaxed"]; 
+    const emptyFilter = []; 
+    const testFilter1 = ["happy", "hungry"];
+    const testFilter2 = ["relaxed", "sleepy"]; 
 
-    const objs = [
-        {id:123, str:"abracadabra"},
-        {id:456, str:"banana"},
-        {id:789, str:"caterpillar"},
-    ]
-
-    console.log(`array after deletion:`); 
-    console.table(objs); 
-    console.log('array after deletion:');
-    console.table(deleteObjFromArray(obj, objs));
-
+    console.log('test 1')
+    console.log(`intersection between [${target}] and [${emptyFilter}]: ${intersectionExists(emptyFilter, target)}`);
+    console.log('-------------------'); 
+    console.log('test 2')
+    console.log(`intersection between [${target}] and [${testFilter1}]: ${intersectionExists(testFilter1, target)}`);
+    console.log('-------------------'); 
+    console.log('test 3')
+    console.log(`intersection between [${target}] and [${testFilter2}]: ${intersectionExists(testFilter2, target)}`);
+    console.log('-------------------'); 
+    
 }
 
-
-export { deleteItemFromArray, intersectionExists, findObj, arrayIncludesObj, deleteObjFromArray }
+export { deleteItemFromArray, intersectionExists, findObj, arrayIncludesObj, deleteObjFromArray, validateType }

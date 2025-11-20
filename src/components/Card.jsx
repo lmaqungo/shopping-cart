@@ -16,7 +16,6 @@ const Card = ({ id, strain, type, img, price, setFavourites, itemObj }) => {
      e.stopPropagation();
      e.preventDefault();
      heartClicked ? setHeartClicked(false) : setHeartClicked(true);
-
   }
 
   useEffect( () => {

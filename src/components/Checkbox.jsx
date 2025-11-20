@@ -33,7 +33,6 @@ const Checkbox = ({ label='default label', type='multi-click', uniClickHandler, 
             parentArraySetter(deleteItemFromArray(newArr, label))
           } 
         }
-
       }
     }, 
     [isClicked, parent])
