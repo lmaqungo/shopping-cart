@@ -53,16 +53,17 @@ const Store = () => {
   
   const [favourites, setFavourites] = useState([]);
 
-  const [filteredItems, setFilteredItems] = useState([]); 
+  const [filteredItems, setFilteredItems] = useState([])
 
 
   const location = useLocation();  
   const { currentItemID } = useParams();  
   const [currentItem, currentItemIndex] = findObj(currentItemID, items);  
 
-  // useEffect(()=> console.log(`selected type: ${selectedType}`), 
-  //   [selectedType]
-  // )
+  useEffect(() =>
+    updateFilteredItems()
+    , [selectedType, selectedEffects, selectedFlavours]
+  )
 
   useEffect(()=>{
     selectedEffects.forEach((effect, index)=>
@@ -93,12 +94,14 @@ const Store = () => {
   }
 
   function updateFilteredItems(){
-    const filteredItems =  
+    const filteredItemsArr =  
     items.filter(item=>
-      validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours)
+      (validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))
     )
-    setFilteredItems(filteredItems); 
+    
+    setFilteredItems(filteredItemsArr); 
   }; 
+
 
   const renderTypeTags = () =>{
     return(
@@ -148,19 +151,17 @@ const Store = () => {
 
   const renderCards = () => {
     let cards = [];
-    (filterIsApplied()) ? cards = ( items.map(item=>
-      ((validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))) && <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
-    )
-
-    ) : cards = (items.map(item=>
-      <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
-    ))
+    if(filterIsApplied()){
+      cards = filteredItems.map(item=> 
+        <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+      )
+    } else if(!filterIsApplied()){
+      cards = items.map(item=>
+        <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+      )
+    }
 
     return cards
-    /* 
-    now that we have the filters working correctly, if filters are applied, append the items to an array using them, then map those items to the cards. So if the array is empty, we can display the whole 'items don't exist' also so we can update the items count in the header   
-    */
-
   }
 
   const renderStoreFront = () =>{
@@ -178,7 +179,7 @@ const Store = () => {
           </Accordion>
         </div>
         <div className={styles.items}>
-          <h2>{`Items (${items.length})`}</h2>
+          <h2>{`Items (${filterIsApplied ? filteredItems.length : items.length})`}</h2>
           {
             (filterIsApplied()) && renderTags()
           }
