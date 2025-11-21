@@ -88,6 +88,8 @@ const Store = () => {
     )
   }
 
+
+
   const renderEffectTags = () => {
     return(
       <>
@@ -179,7 +181,7 @@ const Store = () => {
         location.pathname === '/store' && renderStoreFront()
       }
       {
-        currentItemID && <Item strain={currentItem.strain} id={currentItem.id} type={currentItem.type} effects={currentItem.effects} flavours={currentItem.flavours} img={currentItem.img} price={currentItem.calculatePrice} quantity={currentItem.quantity} setItems={setItems} />
+        currentItemID && <Item itemObj={currentItem} setItems={setItems} />
       }
     </>
   )

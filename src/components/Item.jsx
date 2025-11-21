@@ -4,12 +4,12 @@ import styles from '../styles/item.module.css'
 import { BackIcon, PackageIcon } from '../icons/icons'
 import { findObj } from '../utils/utils'
 
-const Item = ({ id, strain, type, effects, flavours, img, price, quantity, setItems }) => {
+const Item = ({ itemObj ,setItems }) => {
 
   const incrementQuantity = () => 
     setItems(prevArr=> {
       const newArr= [...prevArr]; 
-      const [obj, index] = findObj(id, prevArr); 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
       obj.quantity+=1; 
       newArr[index] = obj;
       return newArr;
@@ -19,7 +19,7 @@ const Item = ({ id, strain, type, effects, flavours, img, price, quantity, setIt
   const decrementQuantity = () => 
     setItems(prevArr => {
       const newArr= [...prevArr]; 
-      const [obj, index] = findObj(id, prevArr); 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
       if(obj.quantity > 1){
         obj.quantity-=1;
       }
@@ -38,14 +38,14 @@ const Item = ({ id, strain, type, effects, flavours, img, price, quantity, setIt
       <div className={styles.main}>
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
-            <img src={img} alt='weed image' width='96px'/>
+            <img src={itemObj.img} alt='weed image' width='96px'/>
           </div>
           <div className={styles.bottom}>
             <div className={styles.filters}>
               <p className={styles.filterTitle} >Effects:</p>
               <div className={styles.filterContainer}>
               {
-                effects.map(effect=> <p className={styles.filter} >{effect}</p>
+                itemObj.effects.map(effect=> <p className={styles.filter} >{effect}</p>
                 )
               }
               </div>
@@ -54,7 +54,7 @@ const Item = ({ id, strain, type, effects, flavours, img, price, quantity, setIt
               <p className={styles.filterTitle} >Flavours:</p>
               <div className={styles.filterContainer}>
               {
-                flavours.map(flavour=> <p className={styles.filter} >{flavour}</p>
+                itemObj.flavours.map(flavour=> <p className={styles.filter} >{flavour}</p>
 
                 )
               }
@@ -64,16 +64,16 @@ const Item = ({ id, strain, type, effects, flavours, img, price, quantity, setIt
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.upper}>
-            <h1>{ strain }</h1>
-            <p>{ type }</p>
+            <h1>{ itemObj.strain }</h1>
+            <p>{ itemObj.type }</p>
             <div className={styles.inStock}>
               <PackageIcon color={'royalblue'} size={16}/>
               <p>In Stock</p>
             </div>
-            <p className={styles.price} >$ { price }</p>
+            <p className={styles.price} >$ { itemObj.calculatePrice }</p>
             <div className={styles.quantitySelection}>
               <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
-              <p>{ quantity }</p>
+              <p>{ itemObj.quantity }</p>
               <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
             </div>
           </div>
