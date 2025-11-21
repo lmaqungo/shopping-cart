@@ -1,11 +1,10 @@
 import styles from '../styles/header.module.css'
 import { Link } from 'react-router'
 import { HeartIcon, CartIcon, SearchIcon} from '../icons/icons'
-import { useState } from 'react'
 
-const Header = () => {
 
-  const [activeHeart, setActiveHeart] = useState(false); 
+const Header = ({ activeHeart, setActiveHeart }) => {
+
 
   const heartClickHandler = () => {
     activeHeart ? setActiveHeart(false)  : setActiveHeart(true)

@@ -27,18 +27,26 @@ const Store = () => {
     items, 
     setItems,  
     savedItems, 
-    setSavedItems
+    setSavedItems, 
+    activeHeart
   } = useOutletContext();
   
-  const [filteredItems, setFilteredItems] = useState([])
+  const [filteredItems, setFilteredItems] = useState([]); 
+
+    useEffect(() => {
+    savedItems.forEach((item) => console.log(`${item.strain}, saved? ${item.isSaved}`))
+  } , [savedItems]
+)
+
 
 
   const location = useLocation();  
   const { currentItemID } = useParams();  
   const [currentItem, currentItemIndex] = findObj(currentItemID, items);  
 
-  useEffect(() =>
-    updateFilteredItems()
+  useEffect(() =>{
+    activeHeart ? updateFilteredItems(savedItems) : updateFilteredItems(items)
+  }
     , [selectedType, selectedEffects, selectedFlavours]
   )
 
@@ -70,9 +78,9 @@ const Store = () => {
     )
   }
 
-  function updateFilteredItems(){
+  function updateFilteredItems(arr){
     const filteredItemsArr =  
-    items.filter(item=>
+    arr.filter(item=>
       (validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))
     )
     
@@ -128,14 +136,14 @@ const Store = () => {
     )
   }
 
-  const renderCards = () => {
+  const renderCards = (arr) => {
     let cards = [];
     if(filterIsApplied()){
       cards = filteredItems.map(item=> 
         <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     } else if(!filterIsApplied()){
-      cards = items.map(item=>
+      cards = arr.map(item=>
         <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     }
@@ -163,7 +171,7 @@ const Store = () => {
             (filterIsApplied()) && renderTags()
           }
           <div className={styles.itemGrid}>
-            {renderCards()}
+            {activeHeart ? renderCards(savedItems) : renderCards(items)}
           </div>
         </div>
       </div>

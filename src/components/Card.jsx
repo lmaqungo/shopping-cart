@@ -26,7 +26,16 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
       obj.isSaved = true; 
       newArr[index] = obj;
       return newArr;
-    })
+    });
+      setSavedItems(prevArr=> {
+          const newArr = [...prevArr]; 
+          if (!arrayIncludesObj(itemObj, prevArr)){
+            newArr.push(itemObj)
+          }
+          return newArr;
+        }
+
+      );
     } else if(!heartClicked){
       setItems(prevArr=> {
       const newArr= [...prevArr]; 
@@ -34,38 +43,24 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
       obj.isSaved = false; 
       newArr[index] = obj;
       return newArr;
-    })
+    });
+      setSavedItems(prevArr => {
+          const newArr = [...prevArr]; 
+          if(arrayIncludesObj(itemObj, prevArr)){
+            return deleteObjFromArray(itemObj, newArr);
+          }
+          return newArr;
+        }
+
+        )
     }
   }
     , [heartClicked]
   )
 
-  // useEffect( () => {
-  //   if(heartClicked){
-  //     setFavourites(prevArr=> {
-  //       const newArr = [...prevArr]; 
-  //       if (!arrayIncludesObj(itemObj, newArr)){
-  //         newArr.push(itemObj)
-  //       }
-  //       return newArr;
-  //     }
 
-  //     )
-  //   } 
-  //   else if (!heartClicked){
-  //     setFavourites(prevArr => {
-  //       const newArr = [...prevArr]; 
-  //       if(arrayIncludesObj(itemObj, newArr)){
-  //         return deleteObjFromArray(itemObj, newArr);
-  //       }
-  //       return newArr;
-  //     }
 
-  //     )
-  //   }
-  // }
-  //   , [heartClicked]
-  // )
+
 
   const cartClickHandler = (e) => {
     e.stopPropagation(); 
@@ -77,7 +72,7 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
     <>
       <Link className={styles.removeLinkStyling} to={`${itemObj.id}`}>      
         <div className={styles.cardOuter}>
-            <HeartIcon className={heartClicked ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
+            <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
                 <img src={itemObj.img} alt='weed image' width='96px'/>
             </div>

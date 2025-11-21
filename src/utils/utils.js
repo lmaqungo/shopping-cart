@@ -34,7 +34,9 @@ const findObj = (id, objArr) => {
     const obj = objArr.find(objElem => objElem.id === id);
     const objIndex = objArr.findIndex(objElem=> objElem===obj);
     return [obj, objIndex];
-}
+} 
+
+// decouple this function
 
 const arrayIncludesObj = (obj, objArr) =>{
     const [targetObj, targetObjIndex] = findObj(obj.id, objArr); 

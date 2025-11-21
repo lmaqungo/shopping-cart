@@ -16,6 +16,9 @@ function App() {
   const [selectedEffects, setSelectedEffects] = useState([]); 
   const [selectedFlavours, setSelectedFlavours] = useState([]); 
 
+  const [activeHeart, setActiveHeart] = useState(false); 
+
+
   const templateItem = ({ strain='Default Weed', 
                           type='Hybrid', 
                           effects=['happy', 'hungry', 'relaxed'], 
@@ -72,6 +75,17 @@ function App() {
 
   const [savedItems, setSavedItems] = useState([]);
 
+//   useEffect(() => {
+//     savedItems.forEach((item, index) => console.log(`index ${index +1}: ${item.strain}`))
+//   } , [savedItems]
+// )
+
+  // useEffect(()=> {
+  //   items.forEach(item=> console.log(`${item.strain} is saved: ${item.isSaved}`))
+  // }
+  //   , [items]
+  // )
+
 
 
   const contextObj = {
@@ -84,13 +98,14 @@ function App() {
     items, 
     setItems, 
     savedItems, 
-    setSavedItems
+    setSavedItems, 
+    activeHeart
   }
 
 
   return (
     <div className="body">
-      <Header />
+      <Header activeHeart={activeHeart} setActiveHeart={setActiveHeart} />
       <main className={location.pathname === "/" ? "center" : ""}>
         <Outlet context={contextObj}/>
       </main>
