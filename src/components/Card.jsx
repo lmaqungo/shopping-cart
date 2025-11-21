@@ -96,9 +96,7 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
             return deleteObjFromArray(itemObj, newArr);
           }
           return newArr;
-      }
-
-      )
+      })
     }
   }
     , [cartClicked]

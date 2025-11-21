@@ -48,22 +48,28 @@ const arrayIncludesObj = (obj, objArr) =>{
     }
 }
 
-const tests = () => {
-    const target = ["happy", "hungry", "relaxed"]; 
-    const emptyFilter = []; 
-    const testFilter1 = ["happy", "hungry"];
-    const testFilter2 = ["relaxed", "sleepy"]; 
-
-    console.log('test 1')
-    console.log(`intersection between [${target}] and [${emptyFilter}]: ${intersectionExists(emptyFilter, target)}`);
-    console.log('-------------------'); 
-    console.log('test 2')
-    console.log(`intersection between [${target}] and [${testFilter1}]: ${intersectionExists(testFilter1, target)}`);
-    console.log('-------------------'); 
-    console.log('test 3')
-    console.log(`intersection between [${target}] and [${testFilter2}]: ${intersectionExists(testFilter2, target)}`);
-    console.log('-------------------'); 
-    
+const roundTo = (value, decimals=0) => {
+    const factor = 10 ** decimals;
+    return Math.round(value * factor) / factor;
 }
 
-export { deleteItemFromArray, intersectionExists, findObj, arrayIncludesObj, deleteObjFromArray, validateType }
+
+const tests = () => {
+    const num1 = 12
+    const num2 = 12.2453
+    const num3 = 12.23326
+
+    console.log('test 1')
+    console.log(`round off ${num1} to 0 decimal places: ${roundTo(num1)}`)
+    console.log('-------------------'); 
+    console.log('test 2')
+    console.log(`round off ${num2} to 1 decimal places: ${roundTo(num2, 1)}`)
+    console.log('-------------------'); 
+    console.log('test 3')
+    console.log(`round off ${num3} to 2 decimal places: ${roundTo(num3, 2)}`)
+    console.log('-------------------'); 
+                                                     
+}
+
+
+export { deleteItemFromArray, intersectionExists, findObj, arrayIncludesObj, deleteObjFromArray, validateType, roundTo }

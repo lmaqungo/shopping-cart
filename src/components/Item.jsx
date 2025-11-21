@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router'
 import styles from '../styles/item.module.css'
 import { BackIcon, PackageIcon } from '../icons/icons'
-import { findObj } from '../utils/utils'
+import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
 
-const Item = ({ itemObj ,setItems }) => {
+const Item = ({ itemObj, setItems, setCart }) => {
 
   const incrementQuantity = () => 
     setItems(prevArr=> {
@@ -27,6 +27,45 @@ const Item = ({ itemObj ,setItems }) => {
       return newArr;
     }
   );
+
+
+  const addToCart = () => {
+    setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.inCart = true; 
+      newArr[index] = obj;
+      return newArr;
+    }); 
+    setCart( prevArr => {
+      const newArr = [...prevArr]; 
+      if (!arrayIncludesObj(itemObj, prevArr)){
+        newArr.push(itemObj)
+      }
+      return newArr;
+    });
+  } 
+
+  const buyNow = () => {
+    addToCart(); 
+  }
+
+  const removeFromCart = () => {
+     setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.inCart = false; 
+      newArr[index] = obj;
+      return newArr;
+    }); 
+    setCart(prevArr => {
+        const newArr = [...prevArr]; 
+        if(arrayIncludesObj(itemObj, prevArr)){
+          return deleteObjFromArray(itemObj, newArr);
+        }
+        return newArr;
+    });
+  }
 
   return (
     <div className={styles.body}>
@@ -81,8 +120,12 @@ const Item = ({ itemObj ,setItems }) => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit convallis congue. Nam fermentum, nibh non ultrices volutpat, elit turpis viverra lorem, in lobortis quam elit non nisi. Vivamus tristique malesuada massa, sed tincidunt ipsum iaculis sit amet. Morbi dapibus est eget turpis gravida placerat. Fusce elit lectus, imperdiet at.
           </p>
           <div className={styles.callToActions}>
-              <button className={styles.buyNow} >Buy Now</button>
-              <button className={styles.addToBag} >Add To Bag</button>
+              <span>
+                <Link style={{display: 'inline' }} to='/cart' >
+                  <button className={styles.buyNow} onClick={buyNow}>Buy Now</button>
+                </Link>
+              </span>
+              <button className={styles.addToBag} onClick={itemObj.inCart ? removeFromCart : addToCart}>{itemObj.inCart ? 'Remove from Cart' : 'Add To Cart'}</button>
           </div>
         </div>
       </div>

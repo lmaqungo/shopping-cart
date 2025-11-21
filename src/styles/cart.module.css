@@ -1,0 +1,63 @@
+
+
+.columnFlex{
+    display: flex;
+    flex-direction: column;
+}
+
+.body{
+    composes: columnFlex;
+    gap: 24px;
+}
+
+.backButton:hover{
+    background-color: rgb(224, 227, 230);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.mainContent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart{
+    composes: columnFlex; 
+    gap: 24px;
+}
+
+.orderSummary{
+    width: 400px;
+    padding: 50px;
+    border-radius: 6px;
+    border: 2px solid rgb(224, 227, 230);
+    display: flex; 
+    flex-direction: column;
+    gap: 20px;
+    align-self: start;
+}
+
+.orderSummary hr{
+    border: 1px solid rgb(224, 227, 230);
+}
+
+.rowSpan{
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout{
+    width: 100%;
+    height: 48px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    background-color: royalblue;
+    color: white;
+    transition: background-color 0.2s ease-out;
+}
+
+.checkout:hover{
+    background-color: rgb(20, 66, 204);
+}

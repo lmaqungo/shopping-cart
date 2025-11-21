@@ -1,6 +1,7 @@
 import App from "./App";
 import Home from "./components/Home";
 import Store from "./components/Store";
+import Cart from "./components/Cart";
 
 const routes =[
     {
@@ -14,6 +15,10 @@ const routes =[
             {
                 path: "store/:currentItemID?", 
                 Component: Store
+            }, 
+            {
+                path: 'cart', 
+                Component: Cart
             }
         ]
     }

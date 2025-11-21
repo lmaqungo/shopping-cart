@@ -29,7 +29,6 @@ const Store = () => {
     savedItems, 
     setSavedItems, 
     activeHeart, 
-    cart, 
     setCart
   } = useOutletContext();
   
@@ -191,7 +190,7 @@ const Store = () => {
         location.pathname === '/store' && renderStoreFront()
       }
       {
-        currentItemID && <Item itemObj={currentItem} setItems={setItems} />
+        currentItemID && <Item itemObj={currentItem} setItems={setItems} setCart={setCart}/>
       }
     </>
   )

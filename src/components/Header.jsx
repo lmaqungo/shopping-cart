@@ -28,7 +28,11 @@ const Header = ({ activeHeart, setActiveHeart }) => {
         </form>
         <div className={styles["nav-gap"]}>
           <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={heartClickHandler} />
-          <CartIcon />
+          <span>
+            <Link style={{display: 'inline' }} to='/cart' >
+              <CartIcon />
+            </Link>
+          </span>
         </div>
     </div>
     </header>

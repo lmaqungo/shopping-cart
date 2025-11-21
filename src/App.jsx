@@ -8,6 +8,7 @@ import Home from './components/Home'
 import { Outlet, useLocation } from 'react-router'
 import { v4 as uuid } from 'uuid' ;
 import weedImg from './assets/weed.png'
+import { roundTo } from './utils/utils'
 
 function App() {
 
@@ -33,7 +34,8 @@ function App() {
   quantity: 1,
   price: 2.44,
   get calculatePrice(){
-    return this.quantity * this.price
+    const total = this.quantity * this.price;
+    return roundTo(total, 2);
   }, 
   isSaved: false, 
   inCart: false
