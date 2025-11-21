@@ -3,7 +3,7 @@ import styles from '../styles/card.module.css'
 import { CartIcon, HeartIcon } from '../icons/icons'
 import { Link } from 'react-router'
 import { useState } from 'react'
-import { arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
+import { arrayIncludesObj, deleteObjFromArray, findObj } from '../utils/utils'
 import { useEffect } from 'react'
 
 
@@ -16,35 +16,56 @@ const Card = ({ setFavourites, itemObj, setItems }) => {
      e.stopPropagation();
      e.preventDefault();
      heartClicked ? setHeartClicked(false) : setHeartClicked(true);
-     // give the itemsObj.isfavourite = heartClicked
   }
 
-  useEffect( () => {
+  useEffect(() => {
     if(heartClicked){
-      setFavourites(prevArr=> {
-        const newArr = [...prevArr]; 
-        if (!arrayIncludesObj(itemObj, newArr)){
-          newArr.push(itemObj)
-        }
-        return newArr;
-      }
-
-      )
-    } 
-    else if (!heartClicked){
-      setFavourites(prevArr => {
-        const newArr = [...prevArr]; 
-        if(arrayIncludesObj(itemObj, newArr)){
-          return deleteObjFromArray(itemObj, newArr);
-        }
-        return newArr;
-      }
-
-      )
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.isSaved = true; 
+      newArr[index] = obj;
+      return newArr;
+    })
+    } else if(!heartClicked){
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.isSaved = false; 
+      newArr[index] = obj;
+      return newArr;
+    })
     }
   }
     , [heartClicked]
   )
+
+  // useEffect( () => {
+  //   if(heartClicked){
+  //     setFavourites(prevArr=> {
+  //       const newArr = [...prevArr]; 
+  //       if (!arrayIncludesObj(itemObj, newArr)){
+  //         newArr.push(itemObj)
+  //       }
+  //       return newArr;
+  //     }
+
+  //     )
+  //   } 
+  //   else if (!heartClicked){
+  //     setFavourites(prevArr => {
+  //       const newArr = [...prevArr]; 
+  //       if(arrayIncludesObj(itemObj, newArr)){
+  //         return deleteObjFromArray(itemObj, newArr);
+  //       }
+  //       return newArr;
+  //     }
+
+  //     )
+  //   }
+  // }
+  //   , [heartClicked]
+  // )
 
   const cartClickHandler = (e) => {
     e.stopPropagation(); 
