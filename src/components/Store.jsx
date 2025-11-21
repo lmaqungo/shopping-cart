@@ -15,28 +15,6 @@ import { useParams, useLocation, useOutletContext } from "react-router";
 import { findObj } from "../utils/utils";
 
 const Store = () => {
-
-  const templateItem = (type='Hybrid', effects=['happy', 'hungry', 'relaxed'], flavours=['earthy', 'flowery', 'pine']) => ({
-    id: uuid(),
-    strain: 'Default Weed', 
-    type: type, 
-    effects: effects, 
-    flavours: flavours,
-    img: weedImg, 
-    quantity: 1,
-    price: 2.44,
-    get calculatePrice(){
-      return this.quantity * this.price
-    }, 
-  })
-
-  const [items, setItems] = useState([
-    templateItem('Indica', ['creative', 'giggly', 'euphoric'], ['mint', 'sweet', 'tar']),   
-    templateItem('Sativa'),
-    templateItem(),  
-    templateItem(),  
-    templateItem(),   
-  ]);
   
   const types = [];
   const effects = [];
@@ -48,7 +26,9 @@ const Store = () => {
     selectedEffects, 
     setSelectedEffects, 
     selectedFlavours, 
-    setSelectedFlavours 
+    setSelectedFlavours, 
+    items, 
+    setItems 
   } = useOutletContext();
   
   const [favourites, setFavourites] = useState([]);
@@ -153,11 +133,11 @@ const Store = () => {
     let cards = [];
     if(filterIsApplied()){
       cards = filteredItems.map(item=> 
-        <Card setFavourites={setFavourites} itemObj={item}/>
+        <Card setFavourites={setFavourites} itemObj={item} setItems={setItems}/>
       )
     } else if(!filterIsApplied()){
       cards = items.map(item=>
-        <Card setFavourites={setFavourites} itemObj={item}/>
+        <Card setFavourites={setFavourites} itemObj={item} setItems={setItems}/>
       )
     }
 

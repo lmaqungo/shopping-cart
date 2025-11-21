@@ -7,11 +7,10 @@ import { arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
 import { useEffect } from 'react'
 
 
-const Card = ({ setFavourites, itemObj }) => {
+const Card = ({ setFavourites, itemObj, setItems }) => {
 
-  const [heartClicked, setHeartClicked] = useState(false);
-  // const [heartClicked, setHeartClicked] = useState(itemObj.isFavourited);
-  const [cartClicked, setCartClicked] = useState(false);
+  const [heartClicked, setHeartClicked] = useState(itemObj.isSaved);
+  const [cartClicked, setCartClicked] = useState(itemObj.inCart);
 
   const heartClickHandler = (e) => {
      e.stopPropagation();
