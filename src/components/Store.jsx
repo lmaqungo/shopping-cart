@@ -27,7 +27,7 @@ const Store = () => {
     price: 2.44,
     get calculatePrice(){
       return this.quantity * this.price
-    },
+    }, 
   })
 
   const [items, setItems] = useState([
@@ -153,11 +153,11 @@ const Store = () => {
     let cards = [];
     if(filterIsApplied()){
       cards = filteredItems.map(item=> 
-        <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+        <Card setFavourites={setFavourites} itemObj={item}/>
       )
     } else if(!filterIsApplied()){
       cards = items.map(item=>
-        <Card id={item.id} key={item.id} strain={item.strain} type={item.type} img={item.img} price={item.price} setFavourites={setFavourites} itemObj={item}/>
+        <Card setFavourites={setFavourites} itemObj={item}/>
       )
     }
 

@@ -7,15 +7,17 @@ import { arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
 import { useEffect } from 'react'
 
 
-const Card = ({ id, strain, type, img, price, setFavourites, itemObj }) => {
+const Card = ({ setFavourites, itemObj }) => {
 
   const [heartClicked, setHeartClicked] = useState(false);
+  // const [heartClicked, setHeartClicked] = useState(itemObj.isFavourited);
   const [cartClicked, setCartClicked] = useState(false);
 
   const heartClickHandler = (e) => {
      e.stopPropagation();
      e.preventDefault();
      heartClicked ? setHeartClicked(false) : setHeartClicked(true);
+     // give the itemsObj.isfavourite = heartClicked
   }
 
   useEffect( () => {
@@ -53,17 +55,17 @@ const Card = ({ id, strain, type, img, price, setFavourites, itemObj }) => {
 
   return (
     <>
-      <Link className={styles.removeLinkStyling} to={`${id}`}>      
+      <Link className={styles.removeLinkStyling} to={`${itemObj.id}`}>      
         <div className={styles.cardOuter}>
             <HeartIcon className={heartClicked ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
-                <img src={img} alt='weed image' width='96px'/>
+                <img src={itemObj.img} alt='weed image' width='96px'/>
             </div>
             <div className={styles.bottom}>
                 <div className={styles["text"]}>
-                    <p className={styles.boldText} >{strain}</p>
-                    <p className={styles.greyText} >{type}</p>
-                    <p className={styles.boldText} >{`$${price}`}</p>
+                    <p className={styles.boldText} >{itemObj.strain}</p>
+                    <p className={styles.greyText} >{itemObj.type}</p>
+                    <p className={styles.boldText} >{`$${itemObj.price}`}</p>
                 </div>
                 <CartIcon className={cartClicked ? styles.cartClicked : styles.cart} onClick={cartClickHandler}/>
             </div>
