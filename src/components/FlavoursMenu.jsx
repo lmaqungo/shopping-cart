@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react' 
 import Checkbox from './Checkbox'
 
 const FlavoursMenu = ({ flavoursArray, setSelectedFlavours, selectedFlavours }) => {

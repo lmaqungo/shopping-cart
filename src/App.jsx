@@ -14,6 +14,7 @@ function App() {
   const location = useLocation(); 
   const [selectedType, setSelectedType] = useState('');  
   const [selectedEffects, setSelectedEffects] = useState([]); 
+  const [selectedFlavours, setSelectedFlavours] = useState([]); 
 
   const templateItem = ({ strain='Default Weed', 
                           type='Hybrid', 
@@ -36,7 +37,6 @@ function App() {
   })
 
 
-  const [selectedFlavours, setSelectedFlavours] = useState([]); 
     const [items, setItems] = useState([
     templateItem({strain: 'OG Kush',
                   type: 'hybrid', 

@@ -1,10 +1,7 @@
 import Accordion from "./Accordion"
 import styles from '../styles/store.module.css'
-import { v4 as uuid } from 'uuid' ;
-import weedImg from '../assets/weed.png'
 import Card from "./Card";
 import { useEffect, useState } from "react";
-import Checkbox from "./Checkbox";
 import TypesMenu from "./TypesMenu";
 import EffectsMenu from "./EffectsMenu";
 import FlavoursMenu from "./FlavoursMenu";
