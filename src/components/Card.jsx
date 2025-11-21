@@ -7,7 +7,7 @@ import { arrayIncludesObj, deleteObjFromArray, findObj } from '../utils/utils'
 import { useEffect } from 'react'
 
 
-const Card = ({ setSavedItems, itemObj, setItems }) => {
+const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved);
   const [cartClicked, setCartClicked] = useState(itemObj.inCart);
@@ -17,6 +17,13 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
      e.preventDefault();
      heartClicked ? setHeartClicked(false) : setHeartClicked(true);
   }
+  
+  const cartClickHandler = (e) => {
+    e.stopPropagation(); 
+    e.preventDefault(); 
+    cartClicked ? setCartClicked(false) : setCartClicked(true);
+  }
+
 
   useEffect(() => {
     if(heartClicked){
@@ -58,15 +65,46 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
     , [heartClicked]
   )
 
+  useEffect(() => {
+    if(cartClicked){ 
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.inCart = true; 
+      newArr[index] = obj;
+      return newArr;
+      }); 
+      setCart( prevArr => {
+        const newArr = [...prevArr]; 
+        if (!arrayIncludesObj(itemObj, prevArr)){
+          newArr.push(itemObj)
+        }
+        return newArr;
+      }
+      ); 
+    } else if(!cartClicked){
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.inCart = false; 
+      newArr[index] = obj;
+      return newArr;
+    }); 
+      setCart(prevArr => {
+          const newArr = [...prevArr]; 
+          if(arrayIncludesObj(itemObj, prevArr)){
+            return deleteObjFromArray(itemObj, newArr);
+          }
+          return newArr;
+      }
 
-
-
-
-  const cartClickHandler = (e) => {
-    e.stopPropagation(); 
-    e.preventDefault(); 
-    cartClicked ? setCartClicked(false) : setCartClicked(true);
+      )
+    }
   }
+    , [cartClicked]
+  )
+
+
 
   return (
     <>
@@ -82,7 +120,7 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
                     <p className={styles.greyText} >{itemObj.type}</p>
                     <p className={styles.boldText} >{`$${itemObj.price}`}</p>
                 </div>
-                <CartIcon className={cartClicked ? styles.cartClicked : styles.cart} onClick={cartClickHandler}/>
+                <CartIcon className={itemObj.inCart ? styles.cartClicked : styles.cart} onClick={cartClickHandler}/>
             </div>
         </div>
       </Link>

@@ -74,10 +74,15 @@ function App() {
   ]);
 
   const [savedItems, setSavedItems] = useState([]);
+  const [cart, setCart] = useState([]);
 
 //   useEffect(() => {
 //     savedItems.forEach((item, index) => console.log(`index ${index +1}: ${item.strain}`))
 //   } , [savedItems]
+// )
+//   useEffect(() => {
+//     cart.forEach((item) => console.log(`${item.strain} in cart: ${item.inCart}`))
+//   } , [cart]
 // )
 
   // useEffect(()=> {
@@ -85,8 +90,6 @@ function App() {
   // }
   //   , [items]
   // )
-
-
 
   const contextObj = {
     selectedType, 
@@ -99,6 +102,8 @@ function App() {
     setItems, 
     savedItems, 
     setSavedItems, 
+    cart, 
+    setCart,
     activeHeart
   }
 
