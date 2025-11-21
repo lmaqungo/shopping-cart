@@ -70,6 +70,9 @@ function App() {
                 }),    
   ]);
 
+  const [savedItems, setSavedItems] = useState([]);
+
+
 
   const contextObj = {
     selectedType, 
@@ -79,7 +82,9 @@ function App() {
     selectedFlavours, 
     setSelectedFlavours, 
     items, 
-    setItems
+    setItems, 
+    savedItems, 
+    setSavedItems
   }
 
 

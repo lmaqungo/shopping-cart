@@ -7,7 +7,7 @@ import { arrayIncludesObj, deleteObjFromArray, findObj } from '../utils/utils'
 import { useEffect } from 'react'
 
 
-const Card = ({ setFavourites, itemObj, setItems }) => {
+const Card = ({ setSavedItems, itemObj, setItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved);
   const [cartClicked, setCartClicked] = useState(itemObj.inCart);

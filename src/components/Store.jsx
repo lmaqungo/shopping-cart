@@ -25,11 +25,11 @@ const Store = () => {
     selectedFlavours, 
     setSelectedFlavours, 
     items, 
-    setItems 
+    setItems,  
+    savedItems, 
+    setSavedItems
   } = useOutletContext();
   
-  const [favourites, setFavourites] = useState([]);
-
   const [filteredItems, setFilteredItems] = useState([])
 
 
@@ -132,11 +132,11 @@ const Store = () => {
     let cards = [];
     if(filterIsApplied()){
       cards = filteredItems.map(item=> 
-        <Card setFavourites={setFavourites} itemObj={item} setItems={setItems}/>
+        <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     } else if(!filterIsApplied()){
       cards = items.map(item=>
-        <Card setFavourites={setFavourites} itemObj={item} setItems={setItems}/>
+        <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     }
 

@@ -1,8 +1,16 @@
 import styles from '../styles/header.module.css'
 import { Link } from 'react-router'
 import { HeartIcon, CartIcon, SearchIcon} from '../icons/icons'
+import { useState } from 'react'
 
 const Header = () => {
+
+  const [activeHeart, setActiveHeart] = useState(false); 
+
+  const heartClickHandler = () => {
+    activeHeart ? setActiveHeart(false)  : setActiveHeart(true)
+  }
+
   return (
     <header>
     <div className={styles.section}>
@@ -20,7 +28,7 @@ const Header = () => {
         <input type="text" placeholder='Search'/>
         </form>
         <div className={styles["nav-gap"]}>
-          <HeartIcon />
+          <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={heartClickHandler} />
           <CartIcon />
         </div>
     </div>
