@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import './App.css'
 import { HeartIcon, CartIcon, SearchIcon } from './icons/icons'
@@ -6,9 +6,10 @@ import Header from './components/Header'
 import Store from './components/Store'
 import Home from './components/Home'
 import { Outlet, useLocation } from 'react-router'
-import { v4 as uuid } from 'uuid' ;
+import { v4 as uuid } from 'uuid' 
 import weedImg from './assets/weed.png'
 import { roundTo } from './utils/utils'
+import initialItems from './data/items'
 
 function App() {
 
