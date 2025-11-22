@@ -159,10 +159,10 @@ const Store = () => {
           <Accordion title="Type">
             <TypesMenu typesArray={types} selectedType={selectedType} setSelectedType={setSelectedType}/>
           </Accordion>
-          <Accordion title="Effects">
+          <Accordion title="Effects" overflow={true}>
             <EffectsMenu effectsArray={effects} setSelectedEffects={setSelectedEffects} selectedEffects={selectedEffects}  />
           </Accordion>
-          <Accordion title="Flavours">
+          <Accordion title="Flavours" overflow={true}>
             <FlavoursMenu flavoursArray={flavours} setSelectedFlavours={setSelectedFlavours} selectedFlavours={selectedFlavours}/>
           </Accordion>
         </div>
