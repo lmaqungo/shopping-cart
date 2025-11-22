@@ -4,10 +4,25 @@ import { BackIcon } from '../icons/icons'
 import styles from '../styles/cart.module.css'
 import CartCard from './CartCard'
 import { roundTo } from '../utils/utils'
+import Confetti from 'react-confetti-boom'
+import { useState, useEffect } from 'react'
 
 const Cart = () => {
 
   const VAT_RATE = 0.15;
+  const [checkOutClicked, setCheckOutClicked] = useState(false);
+
+    useEffect(() => {
+    const checkoutTimer = setTimeout(() => {
+      setCheckOutClicked(false);
+    }, 2000);
+
+    // Cleanup function: Clear the timeout when the component unmounts
+    // or when the dependencies of useEffect change.
+    return () => {
+      clearTimeout(checkoutTimer);
+    };
+  }, [checkOutClicked]);
 
   const {
     cart, 
@@ -44,8 +59,14 @@ const Cart = () => {
   const vat = calculateVat(); 
   const total = roundTo((subTotal + vat), 2);
 
+  function checkoutAnimation(){
+    
+    cart.length>0 && setCheckOutClicked(true);
+  }
+
   return (
     <div className={styles.body} >
+      {checkOutClicked && <Confetti effectInterval={2000} />}
       <span>
         <Link style={{display: 'inline' }} to='/store' >
           <BackIcon className={styles.backButton} />
@@ -72,7 +93,7 @@ const Cart = () => {
             <h3>Total</h3>
             <h3>{ `$${total}` }</h3>
           </div>
-          <button className={styles.checkout} >Checkout</button>
+          <button className={styles.checkout} onClick={checkoutAnimation}>Checkout</button>
         </div>
       </div>
     </div>

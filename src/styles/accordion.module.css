@@ -29,7 +29,7 @@
 
 .scrolling-child-show{
   composes: non-scrolling-child-show;
-  height: 200px; 
+  height: 264px; 
   overflow: auto
 }
 
