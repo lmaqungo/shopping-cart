@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import styles from '../styles/item.module.css'
-import { BackIcon, PackageIcon } from '../icons/icons'
+import { BackIcon, PackageIcon, WeightIcon } from '../icons/icons'
 import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
 
 const Item = ({ itemObj, setItems, setCart }) => {
@@ -110,10 +110,16 @@ const Item = ({ itemObj, setItems, setCart }) => {
               <p>In Stock</p>
             </div>
             <p className={styles.price} >$ { itemObj.calculatePrice }</p>
-            <div className={styles.quantitySelection}>
-              <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
-              <p>{ itemObj.quantity }</p>
-              <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
+            <div className={styles.quantitySelectionContainer}>
+              <span className={styles.weight}>
+                <WeightIcon size={20} color='black'/>
+                <p>(g)</p>
+              </span>
+              <div className={styles.quantitySelection}>
+                <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
+                <p>{ itemObj.quantity }</p>
+                <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
+              </div>
             </div>
           </div>
           <p className={styles.description} >

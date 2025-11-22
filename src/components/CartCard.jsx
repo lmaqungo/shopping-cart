@@ -63,7 +63,7 @@ const CartCard = ({ itemObj, setItems, setCart }) => {
                         <PackageIcon color={'royalblue'} size={16}/>
                         <p style={{color: 'royalblue' }} >In Stock</p>
                     </div>
-                    <p>{`Qty: ${itemObj.quantity}`}</p>
+                    <p>{`Weight: ${itemObj.quantity} g`}</p>
                 </div>
 
                 <div className={styles.quantitySelection}>

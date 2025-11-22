@@ -74,6 +74,18 @@
     gap: 6px;
 }
 
+.quantitySelectionContainer{
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.weight{
+    display: flex;
+    align-items: center;
+} 
+
+
 .price{
     font-size: 18px;
     font-weight: bold;
