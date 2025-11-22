@@ -51,6 +51,103 @@ const initialItems =  [
                   effects: ['happy', 'hungry', 'relaxed'], 
                   flavours: ['mint', 'earthy', 'sweet']
                 }), 
+    templateItem({
+        strain: 'Sour Diesel', 
+        type: 'hybrid', 
+        effects: ['energetic', 'talkative', 'uplifted'], 
+        flavours: ['diesel', 'chemical', 'skunk']
+    }), 
+    templateItem({
+        strain: 'Durban Poison', 
+        type: 'sativa', 
+        effects: ['focused', 'energetic', 'uplifted'], 
+        flavours: ['pine', 'earthy', 'sage']
+    }), 
+    templateItem({
+        strain: 'Pineapple Express', 
+        type: 'hybrid', 
+        effects: ['happy', 'giggly', 'energetic'], 
+        flavours: ['pineapple', 'tropical', 'citrus']
+    }), 
+    templateItem({
+        strain: 'Gelato', 
+        type: 'hybrid', 
+        effects: ['relaxed', 'aroused', 'euphoric'], 
+        flavours: ['sweet', 'flowery', 'pepper']
+    }), 
+    templateItem({
+        strain: 'Blueberry', 
+        type: 'indica', 
+        effects: ['relaxed', 'sleepy', 'happy'], 
+        flavours: ['blueberry', 'berry', 'sweet']
+    }), 
+    templateItem({
+        strain: 'Strawberry Cough', 
+        type: 'sativa', 
+        effects: ['uplifted', 'energetic', 'happy'], 
+        flavours: ['strawberry', 'sweet', 'berry']
+    }), 
+    templateItem({
+        strain: 'Slurricane', 
+        type: 'indica', 
+        effects: ['sleepy', 'relaxed', 'hungry'], 
+        flavours: ['berry', 'pepper', 'flowery']
+    }), 
+    templateItem({
+        strain: 'MK Ultra', 
+        type: 'indica', 
+        effects: ['sleepy', 'relaxed', 'tingly'], 
+        flavours: ['earthy', 'pungent', 'woody']
+    }), 
+    templateItem({
+        strain: 'Blue Dream', 
+        type: 'hybrid', 
+        effects: ['creative', 'euphoric', 'uplifted'], 
+        flavours: ['berry', 'blueberry', 'sweet']
+    }), 
+    templateItem({
+        strain: 'AK-47', 
+        type: 'hybrid', 
+        effects: ['hungry', 'happy', 'talkative'], 
+        flavours: ['skunk', 'tobacco', 'earthy']
+    }), 
+    templateItem({
+        strain: 'Granddaddy Purple', 
+        type: 'indica', 
+        effects: ['sleepy', 'relaxed', 'hungry'], 
+        flavours: ['grape', 'berry', 'violet']
+    }), 
+    templateItem({
+        strain: 'Hindu Kush', 
+        type: 'indica', 
+        effects: ['sleepy', 'relaxed', 'hungry'], 
+        flavours: ['earthy', 'woody', 'spicy']
+    }), 
+    templateItem({
+        strain: 'Jack Herer', 
+        type: 'sativa', 
+        effects: ['focused', 'energetic', 'creative'], 
+        flavours: ['pine', 'woody', 'earthy']
+    }), 
+    templateItem({
+        strain: 'Super Lemon Haze', 
+        type: 'sativa', 
+        effects: ['energetic', 'focused', 'uplifted'], 
+        flavours: ['lemon', 'citrus', 'lime']
+    }), 
+    templateItem({
+        strain: 'Bubble Gum', 
+        type: 'hybrid', 
+        effects: ['happy', 'relaxed', 'euphoric'], 
+        flavours: ['flowery', 'sweet', 'berry']
+    }), 
+    templateItem({
+        strain: 'Amnesia Haze', 
+        type: 'sativa', 
+        effects: ['giggly', 'euphoric', 'talkative'], 
+        flavours: ['citrus', 'lemon', 'lime']
+    }), 
+    
 ]; 
 
 
