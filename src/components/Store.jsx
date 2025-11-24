@@ -154,7 +154,7 @@ const Store = () => {
 
   const renderStoreFront = () =>{
     return(
-      <div className={styles.flex}>
+      <div className={styles.body}>
         <div className={styles.menu}>
           <Accordion title="Type">
             <TypesMenu typesArray={types} selectedType={selectedType} setSelectedType={setSelectedType}/>

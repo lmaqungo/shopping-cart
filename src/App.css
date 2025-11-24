@@ -1,6 +1,6 @@
 
 .body{
-  width: 100%; 
+  width: 100%;
   padding: 24px 48px;
   display: flex;
   flex-direction: column;
@@ -83,4 +83,15 @@ header{
   color:inherit;
 }
 
+::-webkit-scrollbar{
+  width: 10px;
+}
 
+::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background: rgb(121, 121, 121);
+  border-radius: 5px;
+}

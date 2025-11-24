@@ -27,7 +27,11 @@ const Header = ({ activeHeart, setActiveHeart }) => {
         <input type="text" placeholder='Search'/>
         </form>
         <div className={styles["nav-gap"]}>
-          <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={heartClickHandler} />
+          <span>
+            <Link style={{display: 'inline' }} to='/store' >
+              <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={heartClickHandler} />
+            </Link>
+          </span>
           <span>
             <Link style={{display: 'inline' }} to='/cart' >
               <CartIcon />

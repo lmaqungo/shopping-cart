@@ -30,7 +30,7 @@
 .scrolling-child-show{
   composes: non-scrolling-child-show;
   height: 264px; 
-  overflow: auto
+  overflow: auto; 
 }
 
 .children-hide{

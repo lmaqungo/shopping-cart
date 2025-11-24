@@ -71,7 +71,7 @@ const Cart = () => {
         <Link style={{display: 'inline' }} to='/store' >
           <BackIcon className={styles.backButton} />
         </Link>
-      </span> 
+      </span>
       <h3>Cart</h3>
       <div className={styles.mainContent}>
         <div className={styles.cart}>
