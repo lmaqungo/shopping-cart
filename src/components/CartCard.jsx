@@ -2,6 +2,7 @@ import React from 'react'
 import styles from '../styles/cartcard.module.css'
 import { PackageIcon, DeleteIcon } from '../icons/icons'
 import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
+import { Link } from 'react-router'
 
 const CartCard = ({ itemObj, setItems, setCart }) => {
 
@@ -50,9 +51,13 @@ const CartCard = ({ itemObj, setItems, setCart }) => {
   return (
     <div className={styles.body}>
         <div>
-            <div className={styles.imageContainer}>
-                <img src={itemObj.img} alt='weed image' width='48px'/>
-            </div>
+          <span>
+            <Link style={{display: 'inline' }} to={`/store/${itemObj.id}`}>
+              <div className={styles.imageContainer}>
+                  <img src={itemObj.img} alt='weed image' width='48px'/>
+              </div>
+            </Link>
+          </span>
         </div>
         <div className={styles.rightContainer}>
             <div className={styles.innerContainer}>
