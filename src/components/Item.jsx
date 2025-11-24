@@ -1,10 +1,58 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import styles from '../styles/item.module.css'
 import { BackIcon, PackageIcon, WeightIcon } from '../icons/icons'
 import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
+import { HeartIcon } from '../icons/icons'
 
-const Item = ({ itemObj, setItems, setCart }) => {
+const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
+
+  const [heartClicked, setHeartClicked] = useState(itemObj.isSaved); 
+
+  const heartClickHandler = () => {
+    heartClicked ? setHeartClicked(false) : setHeartClicked(true);
+  }
+
+  useEffect(() => {
+    if(heartClicked){
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.isSaved = true; 
+      newArr[index] = obj;
+      return newArr;
+    });
+      setSavedItems(prevArr=> {
+          const newArr = [...prevArr]; 
+          if (!arrayIncludesObj(itemObj, prevArr)){
+            newArr.push(itemObj)
+          }
+          return newArr;
+        }
+
+      );
+    } else if(!heartClicked){
+      setItems(prevArr=> {
+      const newArr= [...prevArr]; 
+      const [obj, index] = findObj(itemObj.id, prevArr); 
+      obj.isSaved = false; 
+      newArr[index] = obj;
+      return newArr;
+    });
+      setSavedItems(prevArr => {
+          const newArr = [...prevArr]; 
+          if(arrayIncludesObj(itemObj, prevArr)){
+            return deleteObjFromArray(itemObj, newArr);
+          }
+          return newArr;
+        }
+
+        )
+    }
+  }
+    , [heartClicked]
+  )
+
 
   const incrementQuantity = () => 
     setItems(prevArr=> {
@@ -77,6 +125,7 @@ const Item = ({ itemObj, setItems, setCart }) => {
       <div className={styles.main}>
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
+            <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
             <img src={itemObj.img} alt='weed image' width='96px'/>
           </div>
           <div className={styles.bottom}>

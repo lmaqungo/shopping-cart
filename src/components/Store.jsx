@@ -190,7 +190,7 @@ const Store = () => {
         location.pathname === '/store' && renderStoreFront()
       }
       {
-        currentItemID && <Item itemObj={currentItem} setItems={setItems} setCart={setCart}/>
+        currentItemID && <Item itemObj={currentItem} setItems={setItems} setCart={setCart} setSavedItems={setSavedItems} />
       }
     </>
   )
