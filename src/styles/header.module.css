@@ -48,6 +48,7 @@
 .search{
   position: relative;
   flex-shrink: 0;
+  display: none;
 }
 
 .search-icon{

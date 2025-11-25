@@ -31,9 +31,9 @@ const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType }) => {
         </nav>
     </div>
     <div className={styles.section}>
-        <form className={styles.search}>
-        <SearchIcon className={styles['search-icon']}/>
-        <input type="text" placeholder='Search'/>
+        <form className={styles.search} >
+          <SearchIcon className={styles['search-icon']}/>
+          <input type="text" placeholder='Search'/>
         </form>
         <div className={styles["nav-gap"]}>
           <span>
