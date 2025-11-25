@@ -19,6 +19,15 @@ function App() {
   const [savedItems, setSavedItems] = useState([]);
   const [cart, setCart] = useState([]);
 
+  const [error, setError] = useState(null);
+
+  useEffect(()=> {
+    window.addEventListener('error', (e)=> setError(e.error)); 
+    window.addEventListener('unhandledrejection', (e) => setError(e.reason))
+  }, [])
+
+    if(error) return <div>Something broke. check console</div> 
+
 
 
   const contextObj = {
