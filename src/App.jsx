@@ -19,24 +19,7 @@ function App() {
   const [savedItems, setSavedItems] = useState([]);
   const [cart, setCart] = useState([]);
 
-//   useEffect(() => {
-//     savedItems.forEach((item, index) => console.log(`index ${index +1}: ${item.strain}`))
-//   } , [savedItems]
-// )
-//   useEffect(() => {
-//     cart.forEach((item) => console.log(`${item.strain} in cart: ${item.inCart}`))
-//   } , [cart]
-// )
 
-  // useEffect(()=> {
-  //   items.forEach(item=> console.log(`${item.strain} is saved: ${item.isSaved}`))
-  // }
-  //   , [items]
-  // )
-
-//   useEffect(()=> console.log(`active type: ${activeType}`)
-//     , [activeType] 
-// )
 
   const contextObj = {
     selectedType, 

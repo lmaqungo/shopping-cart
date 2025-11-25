@@ -34,10 +34,7 @@ const Store = () => {
   
   const [filteredItems, setFilteredItems] = useState([]); 
 
-    useEffect(() => {
-    savedItems.forEach((item) => console.log(`${item.strain}, saved? ${item.isSaved}`))
-  } , [savedItems]
-)
+
 
 
 
@@ -51,13 +48,6 @@ const Store = () => {
     , [selectedType, selectedEffects, selectedFlavours, activeHeart]
   )
 
-  useEffect(()=>{
-    selectedEffects.forEach((effect, index)=>
-      console.log(`${index+1}. ${effect}`)
-    )
-  }
-  )
-  
   function updateTypes() {
     items.forEach(item => !types.includes(item.type) && types.push(item.type))
   }
@@ -88,7 +78,6 @@ const Store = () => {
     setFilteredItems(filteredItemsArr); 
   }; 
 
-
   const renderTypeTags = () =>{
     return(
      <>
@@ -96,8 +85,6 @@ const Store = () => {
      </>
     )
   }
-
-
 
   const renderEffectTags = () => {
     return(
@@ -155,11 +142,6 @@ const Store = () => {
   const calculateLength = (array) => {
     return filterIsApplied() ? filteredItems.length : array.length
   }
-
-  useEffect(()=> console.log(`heart is active: ${activeHeart}`)
-    , [activeHeart]
-  )
-
 
   const renderStoreFront = () =>{
     return(
