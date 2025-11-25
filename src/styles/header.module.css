@@ -18,6 +18,14 @@
   text-decoration: none;
 }
 
+.logoHeader{
+  letter-spacing: -2px;
+}
+
+.green{
+  color: green;
+}
+
 .logo:visited{
   color: inherit
 }

@@ -19,3 +19,11 @@
   border: 1px solid slategray;
   cursor: pointer;
 }
+
+.logoHeader{
+  letter-spacing: -2px;
+}
+
+.green{
+  color: green;
+}
