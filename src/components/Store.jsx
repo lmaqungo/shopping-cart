@@ -48,7 +48,7 @@ const Store = () => {
   useEffect(() =>{
     activeHeart ? updateFilteredItems(savedItems) : updateFilteredItems(items)
   }
-    , [selectedType, selectedEffects, selectedFlavours]
+    , [selectedType, selectedEffects, selectedFlavours, activeHeart]
   )
 
   useEffect(()=>{
@@ -152,6 +152,15 @@ const Store = () => {
     return cards
   }
 
+  const calculateLength = (array) => {
+    return filterIsApplied() ? filteredItems.length : array.length
+  }
+
+  useEffect(()=> console.log(`heart is active: ${activeHeart}`)
+    , [activeHeart]
+  )
+
+
   const renderStoreFront = () =>{
     return(
       <div className={styles.body}>
@@ -167,7 +176,7 @@ const Store = () => {
           </Accordion>
         </div>
         <div className={styles.items}>
-          <h2>{`Items (${filterIsApplied ? filteredItems.length : items.length})`}</h2>
+          <h2>{`Items (${activeHeart ? calculateLength(savedItems) : calculateLength(items)})`}</h2>
           {
             (filterIsApplied()) && renderTags()
           }
