@@ -23,7 +23,7 @@ npm run dev
 
 ## Demo
 
-[!demo image](https://raw.githubusercontent.com/lmaqungo/shopping-cart/refs/heads/main/public/demo.png)
+![demo image](/public/demo.png)
 
 ## Acknowledgement
 
