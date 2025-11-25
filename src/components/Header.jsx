@@ -1,15 +1,24 @@
 import styles from '../styles/header.module.css'
 import { Link } from 'react-router'
 import { HeartIcon, CartIcon, SearchIcon} from '../icons/icons'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router'
 
 
-const Header = ({ activeHeart, setActiveHeart }) => {
+const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType }) => {
 
-
-  const heartClickHandler = () => {
-    activeHeart ? setActiveHeart(false)  : setActiveHeart(true)
+  const handleClick = (id) => {
+    setActiveType(activeType === id ? "" : id);
   }
 
+  useEffect(()=> {
+    activeType === 'heart' ? setActiveHeart(true) : setActiveHeart(false)
+  }
+  , [activeType, activeHeart]
+  )
+
+  const location = useLocation(); 
+  
   return (
     <header>
     <div className={styles.section}>
@@ -29,12 +38,12 @@ const Header = ({ activeHeart, setActiveHeart }) => {
         <div className={styles["nav-gap"]}>
           <span>
             <Link style={{display: 'inline' }} to='/store' >
-              <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={heartClickHandler} />
+              <HeartIcon className={activeHeart ? styles.heartClicked : styles.heart} onClick={()=>handleClick('heart')} />
             </Link>
           </span>
           <span>
             <Link style={{display: 'inline' }} to='/cart' >
-              <CartIcon />
+              <CartIcon onClick={()=>handleClick('cart')} className={location.pathname === "/cart" ? styles.cartClicked : ""}/>
             </Link>
           </span>
         </div>

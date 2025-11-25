@@ -10,6 +10,7 @@ function App() {
   const [selectedType, setSelectedType] = useState('');  
   const [selectedEffects, setSelectedEffects] = useState([]); 
   const [selectedFlavours, setSelectedFlavours] = useState([]); 
+  const [activeType, setActiveType] = useState('');
 
   const [activeHeart, setActiveHeart] = useState(false); 
 
@@ -33,6 +34,10 @@ function App() {
   //   , [items]
   // )
 
+//   useEffect(()=> console.log(`active type: ${activeType}`)
+//     , [activeType] 
+// )
+
   const contextObj = {
     selectedType, 
     setSelectedType, 
@@ -52,7 +57,7 @@ function App() {
 
   return (
     <div className="body">
-      <Header activeHeart={activeHeart} setActiveHeart={setActiveHeart} />
+      <Header activeHeart={activeHeart} setActiveHeart={setActiveHeart} activeType={activeType} setActiveType={setActiveType} />
       <main className={location.pathname === "/" ? "center" : ""}>
         <Outlet context={contextObj}/>
       </main>
