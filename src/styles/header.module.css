@@ -26,7 +26,7 @@
   color: green;
 }
 
-.logo:visited{
+.logo:visited, .logo:link{
   color: inherit
 }
 
@@ -41,7 +41,7 @@
   border-bottom: 2px solid black;
 }
 
-.nav-link:visited{
+.nav-link:visited, .nav-link:link{
   color:inherit;
 }
 
