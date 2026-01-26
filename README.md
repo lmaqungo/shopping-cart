@@ -28,4 +28,3 @@ npm run dev
 ## Acknowledgement
 
 Design inspiration: [amadeuio](https://github.com/amadeuio)
-Damn near copied his whole UI lol...I'm not a designer. I code
