@@ -20,6 +20,10 @@
   cursor: pointer;
 }
 
+.shopBtn:hover{
+  outline: 1px solid black;
+}
+
 .logoHeader{
   letter-spacing: -2px;
 }
