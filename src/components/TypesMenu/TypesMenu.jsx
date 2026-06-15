@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Checkbox from './Checkbox';
+import Checkbox from '../Checkbox/Checkbox';
 
 const TypesMenu = ({ typesArray, selectedType, setSelectedType }) => {
 

@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from '../styles/checkbox.module.css'
+import styles from './checkbox.module.css'
 import { useState, useEffect } from 'react'
-import { CheckIcon } from '../icons/icons'
-import { deleteItemFromArray } from '../utils/utils'
+import { CheckIcon } from '../../icons/icons'
+import { deleteItemFromArray } from '../../utils/utils'
 
 const Checkbox = ({ label='default label', type='multi-click', uniClickHandler, isClickedUni, parent, parentArraySetter, parentArray }) => {
 

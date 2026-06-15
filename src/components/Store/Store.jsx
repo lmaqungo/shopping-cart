@@ -1,15 +1,14 @@
-import Accordion from "./Accordion"
-import styles from '../styles/store.module.css'
-import Card from "./Card";
+import Accordion from "../Accordion/Accordion"
+import styles from './store.module.css'
+import Card from "../Card/Card";
 import { useEffect, useState } from "react";
-import TypesMenu from "./TypesMenu";
-import EffectsMenu from "./EffectsMenu";
-import FlavoursMenu from "./FlavoursMenu";
-import FilterTag from "./FilterTag";
-import { intersectionExists, validateType } from "../utils/utils";
-import Item from "./Item";
+import TypesMenu from "../TypesMenu/TypesMenu";
+import EffectsMenu from "../EffectsMenu/EffectsMenu";
+import FlavoursMenu from "../FlavoursMenu/FlavoursMenu";
+import FilterTag from "../FilterTag/FilterTag";
+import { intersectionExists, validateType, findObj } from "../../utils/utils";
+import Item from "../Item/Item";
 import { useParams, useLocation, useOutletContext } from "react-router";
-import { findObj } from "../utils/utils";
 
 const Store = () => {
   

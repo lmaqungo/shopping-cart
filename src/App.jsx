@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import Header from './components/Header'
+import Header from './components/Header/Header'
 import { Outlet, useLocation } from 'react-router'
 import initialItems from './data/items'
 

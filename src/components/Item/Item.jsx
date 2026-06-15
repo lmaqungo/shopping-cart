@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
-import styles from '../styles/item.module.css'
-import { BackIcon, PackageIcon, WeightIcon } from '../icons/icons'
-import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
-import { HeartIcon } from '../icons/icons'
+import styles from './item.module.css'
+import { BackIcon, PackageIcon, WeightIcon, HeartIcon } from '../../icons/icons'
+import { findObj, arrayIncludesObj, deleteObjFromArray } from '../../utils/utils'
 
 const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
 

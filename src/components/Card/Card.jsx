@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from '../styles/card.module.css'
-import { CartIcon, HeartIcon } from '../icons/icons'
+import styles from './card.module.css'
+import { CartIcon, HeartIcon } from '../../icons/icons'
 import { Link } from 'react-router'
 import { useState } from 'react'
-import { arrayIncludesObj, deleteObjFromArray, findObj } from '../utils/utils'
+import { arrayIncludesObj, deleteObjFromArray, findObj } from '../../utils/utils'
 import { useEffect } from 'react'
 
 

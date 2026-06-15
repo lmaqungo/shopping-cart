@@ -1,7 +1,7 @@
 import React from 'react'
-import styles from '../styles/cartcard.module.css'
-import { PackageIcon, DeleteIcon } from '../icons/icons'
-import { findObj, arrayIncludesObj, deleteObjFromArray } from '../utils/utils'
+import styles from './cartcard.module.css'
+import { PackageIcon, DeleteIcon } from '../../icons/icons'
+import { findObj, arrayIncludesObj, deleteObjFromArray } from '../../utils/utils'
 import { Link } from 'react-router'
 
 const CartCard = ({ itemObj, setItems, setCart }) => {

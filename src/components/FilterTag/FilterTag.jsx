@@ -1,6 +1,6 @@
 import React from 'react'
-import { CloseIcon } from '../icons/icons'
-import styles from '../styles/filtertag.module.css'
+import { CloseIcon } from '../../icons/icons'
+import styles from './filtertag.module.css'
 
 const FilterTag = ({ label='default tag' }) => {
   return (

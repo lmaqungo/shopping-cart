@@ -1,6 +1,6 @@
 import { useState } from 'react'; 
-import { DropDownIcon } from '../icons/icons';
-import styles from '../styles/accordion.module.css';
+import { DropDownIcon } from '../../icons/icons';
+import styles from './accordion.module.css';
 
 const Accordion = ({ children, title, overflow=false }) => {
 

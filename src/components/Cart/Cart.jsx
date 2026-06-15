@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, useOutletContext } from 'react-router'
-import { BackIcon } from '../icons/icons'
-import styles from '../styles/cart.module.css'
-import CartCard from './CartCard'
-import { roundTo } from '../utils/utils'
+import { BackIcon } from '../../icons/icons'
+import styles from './cart.module.css'
+import CartCard from '../CartCard/CartCard'
+import { roundTo } from '../../utils/utils'
 import Confetti from 'react-confetti-boom'
 import { useState, useEffect } from 'react'
 

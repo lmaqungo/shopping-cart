@@ -1,6 +1,6 @@
-import styles from '../styles/header.module.css'
+import styles from './header.module.css'
 import { Link } from 'react-router'
-import { HeartIcon, CartIcon, SearchIcon} from '../icons/icons'
+import { HeartIcon, CartIcon, SearchIcon} from '../../icons/icons'
 import { useEffect } from 'react'
 import { useLocation } from 'react-router'
 
