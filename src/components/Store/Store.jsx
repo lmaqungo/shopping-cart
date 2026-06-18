@@ -147,13 +147,13 @@ const Store = () => {
       <div className={styles.body}>
         <div className={styles.menu}>
           <Accordion title="Type">
-            <TypesMenu typesArray={types} selectedType={selectedType} setSelectedType={setSelectedType}/>
+            {/* <TypesMenu typesArray={types} selectedType={selectedType} setSelectedType={setSelectedType}/> */}
           </Accordion>
           <Accordion title="Effects" overflow={true}>
-            <EffectsMenu effectsArray={effects} setSelectedEffects={setSelectedEffects} selectedEffects={selectedEffects}  />
+            {/* <EffectsMenu effectsArray={effects} setSelectedEffects={setSelectedEffects} selectedEffects={selectedEffects}  /> */}
           </Accordion>
           <Accordion title="Flavours" overflow={true}>
-            <FlavoursMenu flavoursArray={flavours} setSelectedFlavours={setSelectedFlavours} selectedFlavours={selectedFlavours}/>
+            {/* <FlavoursMenu flavoursArray={flavours} setSelectedFlavours={setSelectedFlavours} selectedFlavours={selectedFlavours}/> */}
           </Accordion>
         </div>
         <div className={styles.items}>
@@ -169,9 +169,9 @@ const Store = () => {
     )
   }
 
-  updateTypes();
-  updateEffects();
-  updateFlavours();
+  // updateTypes();
+  // updateEffects();
+  // updateFlavours();
 
  
   return (

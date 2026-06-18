@@ -28,7 +28,6 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
           }
           return newArr;
         }
-
       );
     } else if(!heartClicked){
       setItems(prevArr=> {
@@ -132,17 +131,7 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
               <p className={styles.filterTitle} >Effects:</p>
               <div className={styles.filterContainer}>
               {
-                itemObj.effects.map(effect=> <p className={styles.filter} >{effect}</p>
-                )
-              }
-              </div>
-            </div>
-            <div className={styles.filters}>
-              <p className={styles.filterTitle} >Flavours:</p>
-              <div className={styles.filterContainer}>
-              {
-                itemObj.flavours.map(flavour=> <p className={styles.filter} >{flavour}</p>
-
+                itemObj.tags.map(effect=> <p className={styles.filter} >{effect}</p>
                 )
               }
               </div>
@@ -151,8 +140,7 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
         </div>
         <div className={styles.rightContainer}>
           <div className={styles.upper}>
-            <h1>{ itemObj.strain }</h1>
-            <p>{ itemObj.type }</p>
+            <h1>{ itemObj.name }</h1>
             <div className={styles.inStock}>
               <PackageIcon color={'royalblue'} size={16}/>
               <p>In Stock</p>

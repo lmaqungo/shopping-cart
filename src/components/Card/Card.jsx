@@ -102,19 +102,17 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
     , [cartClicked]
   )
 
-
-
   return (
     <>
       <Link className={styles.removeLinkStyling} to={`${itemObj.id}`}>      
         <div className={styles.cardOuter}>
             <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
-                <img src={itemObj.img} alt='weed image' width='96px'/>
+                <img src={itemObj.img} alt='lego image' width='96px'/>
             </div>
             <div className={styles.bottom}>
                 <div className={styles["text"]}>
-                    <p className={styles.boldText} >{itemObj.strain}</p>
+                    <p className={styles.boldText} >{itemObj.name}</p>
                     <p className={styles.greyText} >{itemObj.type}</p>
                     <p className={styles.boldText} >{`$${itemObj.price}`}</p>
                 </div>
