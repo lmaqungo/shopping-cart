@@ -9,48 +9,59 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved); 
 
   const heartClickHandler = () => {
-    heartClicked ? setHeartClicked(false) : setHeartClicked(true);
-  }
-
-  useEffect(() => {
     if(heartClicked){
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.isSaved = true; 
-      newArr[index] = obj;
-      return newArr;
-    });
-      setSavedItems(prevArr=> {
-          const newArr = [...prevArr]; 
-          if (!arrayIncludesObj(itemObj, prevArr)){
-            newArr.push(itemObj)
+      setItems(prevArr => 
+        prevArr.map(item=> {
+          if(itemObj.id === item.id){
+            return {
+              ...item, 
+              isSaved: false 
+            }
+          } else {
+            return item
           }
-          return newArr;
-        }
-      );
-    } else if(!heartClicked){
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.isSaved = false; 
-      newArr[index] = obj;
-      return newArr;
-    });
+        })
+      )
+      setSavedItems(prevArr => 
+        prevArr.filter(item => item.id!== itemObj.id)
+      )
+      setHeartClicked(false)
+    } else {
+      setItems(prevArr => 
+        prevArr.map(item=> {
+          if(itemObj.id === item.id){
+            return {
+              ...item, 
+              isSaved: true 
+            }
+          } else {
+            return item
+          }
+        })
+      )
       setSavedItems(prevArr => {
-          const newArr = [...prevArr]; 
-          if(arrayIncludesObj(itemObj, prevArr)){
-            return deleteObjFromArray(itemObj, newArr);
-          }
-          return newArr;
-        }
-
-        )
+        const arr = [...prevArr]; 
+        arr.push(itemObj); 
+        return arr
+      })
+      setHeartClicked(true)
     }
   }
-    , [heartClicked]
-  )
 
+  const handleColorSelection = (e) => {
+    setItems(prevItemsArray => 
+      prevItemsArray.map(item=> {
+        if(item.id === itemObj.id){
+          return {
+            ...item, 
+            selectedColor: e.target.value
+          }
+        } else {
+          return item
+        }
+      })
+    )
+  }
 
   const incrementQuantity = () => 
     setItems(prevArr=> {
@@ -124,14 +135,14 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
             <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
-            <img src={itemObj.img} alt='weed image' width='96px'/>
+            <img src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='96px'/>
           </div>
           <div className={styles.bottom}>
             <div className={styles.filters}>
-              <p className={styles.filterTitle} >Effects:</p>
+              <p className={styles.filterTitle} >Tags:</p>
               <div className={styles.filterContainer}>
               {
-                itemObj.tags.map(effect=> <p className={styles.filter} >{effect}</p>
+                itemObj.tags.map(tag=> <p className={styles.filter} >{tag}</p>
                 )
               }
               </div>
@@ -158,9 +169,15 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
               </div>
             </div>
           </div>
-          <p className={styles.description} >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit convallis congue. Nam fermentum, nibh non ultrices volutpat, elit turpis viverra lorem, in lobortis quam elit non nisi. Vivamus tristique malesuada massa, sed tincidunt ipsum iaculis sit amet. Morbi dapibus est eget turpis gravida placerat. Fusce elit lectus, imperdiet at.
-          </p>
+          <div className={styles.colorSelectorContainer} >
+            <label htmlFor="color-select">Color</label>
+            <select onChange={handleColorSelection} className={styles.colorSelector} name="color" id="color-select">
+              <option selected={itemObj.selectedColor === 'red' ? true : false } value="red">red</option>
+              <option selected={itemObj.selectedColor === 'green' ? true : false } value="green">green</option>
+              <option selected={itemObj.selectedColor === 'blue' ? true : false } value="blue">blue</option>
+              <option selected={itemObj.selectedColor === 'yellow' ? true : false } value="yellow">Yellow</option>
+            </select>
+          </div>
           <div className={styles.callToActions}>
               <span>
                 <Link style={{display: 'inline' }} to='/cart' >

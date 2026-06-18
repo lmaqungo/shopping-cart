@@ -23,7 +23,7 @@ const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType }) => {
     <header>
     <div className={styles.section}>
         <Link to="/" className={styles.logo}>
-            <h1 className={styles.logoHeader} ><span className={styles.green} >Green</span> Finger</h1>
+            <h1 className={styles.logoHeader} ><span className={styles.green} >Brick</span> Depot</h1>
         </Link>
         <nav className={styles.flex}>
             <Link to='/' className={styles['nav-link']}>Home</Link>

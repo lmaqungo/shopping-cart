@@ -135,6 +135,23 @@
     cursor: pointer;
 }
 
+.colorSelector{
+    composes: cta;
+    background-color: white;
+    padding: 4px 8px;
+}
+
+.colorSelectorContainer{
+    display:flex; 
+    flex-direction: column;
+    gap: 4px;
+}
+
+.colorSelector:hover{
+    border: 2px solid royalblue;
+}
+
+
 .buyNow{
     composes: cta;
     border: none;

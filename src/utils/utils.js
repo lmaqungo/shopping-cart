@@ -31,7 +31,7 @@ const validateType = (filterValue, property)=> {
 }
 
 const findObj = (id, objArr) => {
-    const obj = objArr.find(objElem => objElem.id === id);
+    const obj = objArr.find(objElem => objElem.id === Number(id));
     const objIndex = objArr.findIndex(objElem=> objElem===obj);
     return [obj, objIndex];
 } 

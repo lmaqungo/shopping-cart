@@ -6,35 +6,32 @@ import TypesMenu from "../TypesMenu/TypesMenu";
 import EffectsMenu from "../EffectsMenu/EffectsMenu";
 import FlavoursMenu from "../FlavoursMenu/FlavoursMenu";
 import FilterTag from "../FilterTag/FilterTag";
-import { intersectionExists, validateType, findObj } from "../../utils/utils";
+import TagsMenu from "../TagsMenu/TagsMenu";
+import { intersectionExists, findObj } from "../../utils/utils";
 import Item from "../Item/Item";
 import { useParams, useLocation, useOutletContext } from "react-router";
 
 const Store = () => {
   
-  const types = [];
-  const effects = [];
-  const flavours = [];
+
+  const tags = ['rectangular'];
 
   const {
-    selectedType, 
-    setSelectedType, 
-    selectedEffects, 
-    setSelectedEffects, 
-    selectedFlavours, 
-    setSelectedFlavours, 
     items, 
     setItems,  
     savedItems, 
     setSavedItems, 
     activeHeart, 
-    setCart
+    setCart, 
+    selectedTags, 
+    setSelectedTags
   } = useOutletContext();
   
   const [filteredItems, setFilteredItems] = useState([]); 
 
-
-
+  useEffect(() => {
+    console.log('items:', items)
+  }, [items])
 
 
   const location = useLocation();  
@@ -44,81 +41,37 @@ const Store = () => {
   useEffect(() =>{
     activeHeart ? updateFilteredItems(savedItems) : updateFilteredItems(items)
   }
-    , [selectedType, selectedEffects, selectedFlavours, activeHeart]
+    , [selectedTags, activeHeart]
   )
 
-  function updateTypes() {
-    items.forEach(item => !types.includes(item.type) && types.push(item.type))
-  }
-
-  function updateEffects(){
-    setSelectedType, 
-    items.forEach(item=> 
-      item.effects.forEach(effect=>
-        !effects.includes(effect) && effects.push(effect)
-      )
-    )
-  }
-
-  function updateFlavours(){
-    items.forEach(item=> 
-      item.flavours.forEach(flavour=>
-        !flavours.includes(flavour) && flavours.push(flavour)
-      )
-    )
-  }
 
   function updateFilteredItems(arr){
     const filteredItemsArr =  
     arr.filter(item=>
-      (validateType(selectedType, item.type) && intersectionExists(selectedEffects, item.effects) && intersectionExists(selectedFlavours, item.flavours))
+      (intersectionExists(selectedTags, item.tags) )
     )
     
     setFilteredItems(filteredItemsArr); 
   }; 
 
-  const renderTypeTags = () =>{
-    return(
-     <>
-     { <FilterTag label={selectedType} />}
-     </>
-    )
-  }
-
-  const renderEffectTags = () => {
-    return(
+  const renderItemTags = () => {
+    return (
       <>
       {
-        selectedEffects.map( effect=>
-          <FilterTag label={effect} />
-        )
-      }
-      </>
-    )
-  }
-
-  const renderFlavourTags = () => {
-    return(
-      <>
-      {
-        selectedFlavours.map( flavour=>
-          <FilterTag label={flavour} />
-        )
+        selectedTags.map( tag => <FilterTag label={tag} />)
       }
       </>
     )
   }
 
   const filterIsApplied = () => {
-    return (selectedType || selectedEffects.length>0 || selectedFlavours.length>0)
+    return selectedTags.length > 0 
   }
 
   const renderTags = () => {
     return(
       <div className={styles.tags}>
-        {selectedType && renderTypeTags()}
-        {selectedEffects && renderEffectTags()}
-        {selectedFlavours && renderFlavourTags()}
+        {selectedTags && renderItemTags()}
       </div>
     )
   }
@@ -146,14 +99,9 @@ const Store = () => {
     return(
       <div className={styles.body}>
         <div className={styles.menu}>
-          <Accordion title="Type">
-            {/* <TypesMenu typesArray={types} selectedType={selectedType} setSelectedType={setSelectedType}/> */}
-          </Accordion>
-          <Accordion title="Effects" overflow={true}>
-            {/* <EffectsMenu effectsArray={effects} setSelectedEffects={setSelectedEffects} selectedEffects={selectedEffects}  /> */}
-          </Accordion>
-          <Accordion title="Flavours" overflow={true}>
-            {/* <FlavoursMenu flavoursArray={flavours} setSelectedFlavours={setSelectedFlavours} selectedFlavours={selectedFlavours}/> */}
+          <Accordion title="Tags" overflow={true}>
+
+            <TagsMenu tagsArray={tags} setSelectedTags={setSelectedTags} selectedTags={selectedTags} />
           </Accordion>
         </div>
         <div className={styles.items}>
@@ -168,10 +116,6 @@ const Store = () => {
       </div>
     )
   }
-
-  // updateTypes();
-  // updateEffects();
-  // updateFlavours();
 
  
   return (

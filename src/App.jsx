@@ -7,9 +7,8 @@ import initialItems from './data/items'
 function App() {
 
   const location = useLocation(); 
-  const [selectedType, setSelectedType] = useState('');  
-  const [selectedEffects, setSelectedEffects] = useState([]); 
-  const [selectedFlavours, setSelectedFlavours] = useState([]); 
+  const [selectedTags, setSelectedTags] = useState([]); 
+
   const [activeType, setActiveType] = useState('');
 
   const [activeHeart, setActiveHeart] = useState(false); 
@@ -31,19 +30,15 @@ function App() {
 
 
   const contextObj = {
-    selectedType, 
-    setSelectedType, 
-    selectedEffects, 
-    setSelectedEffects, 
-    selectedFlavours, 
-    setSelectedFlavours, 
     items, 
     setItems, 
     savedItems, 
     setSavedItems, 
     cart, 
     setCart,
-    activeHeart
+    activeHeart, 
+    selectedTags, 
+    setSelectedTags
   }
 
 

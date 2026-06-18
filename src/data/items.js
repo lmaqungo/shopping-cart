@@ -8,14 +8,14 @@ import yellow from '../assets/yellow-2X4.png';
 import { roundTo } from '../utils/utils';
 
 
-  const templateItem = ({ name, tags, price=2.5, colors, isAvailable=true }) => ({
-    id: uuid(),
+  const templateItem = ({ id, name, tags, price=2.5, colors, isAvailable=true }) => ({
+    id: id, 
     name: name, 
     tags: tags, 
-    selectedCol: 'green', 
-    colors: colors,
+    selectedColor: 'green', 
+    colors: colors, 
     get img(){
-        return this.colors[this.selectedCol]
+        return this.colors[this.selectedColor]
     }, 
     quantity: 1,
     price: price,
@@ -30,6 +30,7 @@ import { roundTo } from '../utils/utils';
 
 const initialItems =  [
     templateItem({
+        id: 0,
         name: 'Brick 2X4',
         tags: ['rectangular'], 
         colors: {
