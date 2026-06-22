@@ -6,8 +6,16 @@ import initialItems from './data/items'
 
 function App() {
 
+  const initialTags = [
+    {
+      id: 1, 
+      title: 'rectangular', 
+      isActive: false
+    }
+  ]
+
   const location = useLocation(); 
-  const [selectedTags, setSelectedTags] = useState([]); 
+  const [tags, setTags] = useState(initialTags); 
 
   const [activeType, setActiveType] = useState('');
 
@@ -37,8 +45,8 @@ function App() {
     cart, 
     setCart,
     activeHeart, 
-    selectedTags, 
-    setSelectedTags
+    tags, 
+    setTags
   }
 
 

@@ -42,9 +42,9 @@ const CheckIcon = ({ size }) => {
     )
 }
 
-const CloseIcon = ({ size, className }) => {
+const CloseIcon = ({ size, className, handleClose }) => {
     return(
-        <svg className={className} xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+        <svg onClick={handleClose} className={className} xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
     )
 } 
 
