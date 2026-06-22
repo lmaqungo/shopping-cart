@@ -5,7 +5,7 @@ import green from '../assets/green-2X4.png';
 import yellow from '../assets/yellow-2X4.png';
 
 
-import { roundTo } from '../utils/utils';
+
 
 
   const templateItem = ({ id, name, tags, price=2.5, colors, isAvailable=true }) => ({
@@ -14,15 +14,8 @@ import { roundTo } from '../utils/utils';
     tags: tags, 
     selectedColor: 'green', 
     colors: colors, 
-    get img(){
-        return this.colors[this.selectedColor]
-    }, 
     quantity: 1,
     price: price,
-    get calculatePrice(){
-        const total = this.quantity * this.price;
-        return roundTo(total, 2);
-    }, 
     isSaved: false, 
     inCart: false, 
     isAvailable: isAvailable
