@@ -2,9 +2,6 @@ import Accordion from "../Accordion/Accordion"
 import styles from './store.module.css'
 import Card from "../Card/Card";
 import { useEffect, useState } from "react";
-import TypesMenu from "../TypesMenu/TypesMenu";
-import EffectsMenu from "../EffectsMenu/EffectsMenu";
-import FlavoursMenu from "../FlavoursMenu/FlavoursMenu";
 import FilterTag from "../FilterTag/FilterTag";
 import TagsMenu from "../TagsMenu/TagsMenu";
 import { intersectionExists, findObj } from "../../utils/utils";
@@ -23,6 +20,7 @@ const Store = () => {
     setSavedItems, 
     activeHeart, 
     setCart, 
+    cart,
     selectedTags, 
     setSelectedTags
   } = useOutletContext();
@@ -30,8 +28,9 @@ const Store = () => {
   const [filteredItems, setFilteredItems] = useState([]); 
 
   useEffect(() => {
-    console.log('items:', items)
-  }, [items])
+    console.log('saved items:', savedItems)
+    console.log('cart:', cart)
+  }, [savedItems, cart])
 
 
   const location = useLocation();  

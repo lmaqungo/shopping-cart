@@ -3,7 +3,6 @@ import styles from './card.module.css'
 import { CartIcon, HeartIcon } from '../../icons/icons'
 import { Link } from 'react-router'
 import { useState } from 'react'
-import { arrayIncludesObj, deleteObjFromArray, findObj } from '../../utils/utils'
 import { useEffect } from 'react'
 
 
@@ -15,92 +14,82 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
   const heartClickHandler = (e) => {
      e.stopPropagation();
      e.preventDefault();
-     heartClicked ? setHeartClicked(false) : setHeartClicked(true);
+     if(heartClicked){
+        setItems(prevArr => 
+          prevArr.map(item=> {
+            if(item.id === itemObj.id){
+              return {
+                ...item, 
+                isSaved: false
+              }
+            } else {
+              return item
+            }
+          })
+        )
+        setSavedItems(prevArr => prevArr.filter(item=> item.id !== itemObj.id))
+        setHeartClicked(false)
+     } else {
+      setItems(prevArr => 
+        prevArr.map(item => {
+          if(item.id === itemObj.id) {
+            return {
+              ...item, 
+              isSaved: true
+            }
+          } else {
+            return item
+          }
+        })
+      )
+      setSavedItems(prevArr => {
+        const arr = [...prevArr]; 
+        arr.push(itemObj); 
+        return arr
+      })
+      setHeartClicked(true)
+     }
   }
   
   const cartClickHandler = (e) => {
     e.stopPropagation(); 
     e.preventDefault(); 
-    cartClicked ? setCartClicked(false) : setCartClicked(true);
-  }
-
-
-  useEffect(() => {
-    if(heartClicked){
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.isSaved = true; 
-      newArr[index] = obj;
-      return newArr;
-    });
-      setSavedItems(prevArr=> {
-          const newArr = [...prevArr]; 
-          if (!arrayIncludesObj(itemObj, prevArr)){
-            newArr.push(itemObj)
+    if(cartClicked){
+      setItems(prevArr => 
+        prevArr.map(item => {
+          if(item.id === itemObj.id){
+            return {
+              ...item, 
+              inCart: false
+            }
+          } else {
+            return item
           }
-          return newArr;
-        }
-
-      );
-    } else if(!heartClicked){
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.isSaved = false; 
-      newArr[index] = obj;
-      return newArr;
-    });
-      setSavedItems(prevArr => {
-          const newArr = [...prevArr]; 
-          if(arrayIncludesObj(itemObj, prevArr)){
-            return deleteObjFromArray(itemObj, newArr);
+        })
+      )
+      setCart(prevArr => prevArr.filter(item=> item.id !== itemObj.id))
+      setCartClicked(false)
+    } else {
+      setItems(prevArr => 
+        prevArr.map(item => {
+          if(item.id === itemObj.id){
+            return {
+              ...item, 
+              inCart: true
+            }
+          } else {
+            return item
           }
-          return newArr;
-        }
-
-        )
-    }
-  }
-    , [heartClicked]
-  )
-
-  useEffect(() => {
-    if(cartClicked){ 
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.inCart = true; 
-      newArr[index] = obj;
-      return newArr;
-      }); 
-      setCart( prevArr => {
-        const newArr = [...prevArr]; 
-        if (!arrayIncludesObj(itemObj, prevArr)){
-          newArr.push(itemObj)
-        }
-        return newArr;
-      }
-      ); 
-    } else if(!cartClicked){
-      setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.inCart = false; 
-      newArr[index] = obj;
-      return newArr;
-    }); 
+        })
+      )
       setCart(prevArr => {
-          const newArr = [...prevArr]; 
-          if(arrayIncludesObj(itemObj, prevArr)){
-            return deleteObjFromArray(itemObj, newArr);
-          }
-          return newArr;
+        const arr = [...prevArr]; 
+        arr.push(itemObj); 
+        return arr
       })
+      setCartClicked(true)
     }
   }
-    , [cartClicked]
-  )
 
   return (
     <>
