@@ -1,52 +1,63 @@
 import React from 'react'
 import styles from './cartcard.module.css'
 import { PackageIcon, DeleteIcon } from '../../icons/icons'
-import { findObj, arrayIncludesObj, deleteObjFromArray } from '../../utils/utils'
+import { roundTo } from '../../utils/utils'
 import { Link } from 'react-router'
 
-const CartCard = ({ itemObj, setItems, setCart }) => {
+const CartCard = ({ itemObj, setItems }) => {
 
-    const incrementQuantity = () => 
-        setItems(prevArr=> {
-          const newArr= [...prevArr]; 
-          const [obj, index] = findObj(itemObj.id, prevArr); 
-          obj.quantity+=1; 
-          newArr[index] = obj;
-          return newArr;
-        }
-    );
-
-    const decrementQuantity = () => 
-        setItems(prevArr => {
-          const newArr= [...prevArr]; 
-          const [obj, index] = findObj(itemObj.id, prevArr); 
-          if(obj.quantity > 1){
-            obj.quantity-=1;
+  const incrementQuantity = () => 
+      setItems(prevArr => 
+        prevArr.map(item => {
+          if(item.id === itemObj.id){
+            return{
+              ...item, 
+              quantity: item.quantity + 1
+            }
+          } else {
+            return item
           }
-          newArr[index] = obj;
-          return newArr;
-        }
-    );
+      }))
+
+  const decrementQuantity = () => 
+    setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          if(item.quantity > 1){
+            return{
+              ...item, 
+              quantity: item.quantity -1
+            }
+          } else {
+            return {
+              ...item, 
+              quantity: 1
+            }
+          }
+        }else {
+          return item
+        } 
+      })
+    )
 
     const removeFromCart = () => {
-        setCart(prevArr => {
-          const newArr = [...prevArr]; 
-          if(arrayIncludesObj(itemObj, prevArr)){
-            return deleteObjFromArray(itemObj, newArr);
+     setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          return {
+            ...item, 
+            inCart: false
           }
-          return newArr;
-      }
-      );
-        setItems(prevArr=> {
-            const newArr= [...prevArr]; 
-            const [obj, index] = findObj(itemObj.id, prevArr); 
-            obj.quantity = 1;
-            obj.inCart = false; 
-            newArr[index] = obj;
-            return newArr;
-        })  
-    }
+        } else {
+          return item
+        }
+      })
+    )
+  }
 
+  function calculatePrice(quantity, price){
+    return roundTo(quantity * price, 2)
+    }
 
   return (
     <div className={styles.body}>
@@ -54,7 +65,7 @@ const CartCard = ({ itemObj, setItems, setCart }) => {
           <span>
             <Link style={{display: 'inline' }} to={`/store/${itemObj.id}`}>
               <div className={styles.imageContainer}>
-                  <img src={itemObj.img} alt='weed image' width='48px'/>
+                  <img src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='48px'/>
               </div>
             </Link>
           </span>
@@ -82,7 +93,7 @@ const CartCard = ({ itemObj, setItems, setCart }) => {
                 <button className={styles.deleteBtn} onClick={removeFromCart}>
                     <DeleteIcon size={18}/>
                 </button>
-                <p>{ `$${itemObj.calculatePrice}` }</p>
+                <p>{ `$${calculatePrice(itemObj.quantity, itemObj.price)}` }</p>
             </div>
         </div>
     </div>

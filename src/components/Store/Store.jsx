@@ -19,18 +19,13 @@ const Store = () => {
     savedItems, 
     setSavedItems, 
     activeHeart, 
-    setCart, 
-    cart,
     selectedTags, 
     setSelectedTags
   } = useOutletContext();
   
   const [filteredItems, setFilteredItems] = useState([]); 
 
-  useEffect(() => {
-    console.log('saved items:', savedItems)
-    console.log('cart:', cart)
-  }, [savedItems, cart])
+
 
 
   const location = useLocation();  
@@ -79,11 +74,11 @@ const Store = () => {
     let cards = [];
     if(filterIsApplied()){
       cards = filteredItems.map(item=> 
-        <Card setSavedItems={setSavedItems} setCart={setCart} itemObj={item} setItems={setItems}/>
+        <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     } else if(!filterIsApplied()){
       cards = arr.map(item=>
-        <Card setSavedItems={setSavedItems} setCart={setCart} itemObj={item} setItems={setItems}/>
+        <Card setSavedItems={setSavedItems} itemObj={item} setItems={setItems}/>
       )
     }
 
@@ -123,7 +118,7 @@ const Store = () => {
         location.pathname === '/store' && renderStoreFront()
       }
       {
-        currentItemID && <Item itemObj={currentItem} setItems={setItems} setCart={setCart} setSavedItems={setSavedItems} />
+        currentItemID && <Item itemObj={currentItem} setItems={setItems} setSavedItems={setSavedItems} />
       }
     </>
   )

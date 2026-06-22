@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router'
 import styles from './item.module.css'
 import { BackIcon, PackageIcon, WeightIcon, HeartIcon } from '../../icons/icons'
-import { findObj, arrayIncludesObj, deleteObjFromArray } from '../../utils/utils'
+import { roundTo } from '../../utils/utils'
 
-const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
+const Item = ({ itemObj, setItems,  setSavedItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved); 
 
@@ -64,43 +64,54 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
   }
 
   const incrementQuantity = () => 
-    setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.quantity+=1; 
-      newArr[index] = obj;
-      return newArr;
-    }
-  );
+    setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          return{
+            ...item, 
+            quantity: item.quantity + 1
+          }
+        } else {
+          return item
+        }
+      })
+    )
 
   const decrementQuantity = () => 
-    setItems(prevArr => {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      if(obj.quantity > 1){
-        obj.quantity-=1;
-      }
-      newArr[index] = obj;
-      return newArr;
-    }
-  );
+    setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          if(item.quantity > 1){
+            return{
+              ...item, 
+              quantity: item.quantity -1
+            }
+          } else {
+            return {
+              ...item, 
+              quantity: 1
+            }
+          }
+        }else {
+          return item
+        } 
+      })
+    )
 
 
   const addToCart = () => {
-    setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.inCart = true; 
-      newArr[index] = obj;
-      return newArr;
-    }); 
-    setCart( prevArr => {
-      const newArr = [...prevArr]; 
-      if (!arrayIncludesObj(itemObj, prevArr)){
-        newArr.push(itemObj)
-      }
-      return newArr;
-    });
+    setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          return {
+            ...item, 
+            inCart: true
+          }
+        } else {
+          return item
+        }
+      })
+    )
   } 
 
   const buyNow = () => {
@@ -108,20 +119,22 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
   }
 
   const removeFromCart = () => {
-     setItems(prevArr=> {
-      const newArr= [...prevArr]; 
-      const [obj, index] = findObj(itemObj.id, prevArr); 
-      obj.inCart = false; 
-      newArr[index] = obj;
-      return newArr;
-    }); 
-    setCart(prevArr => {
-        const newArr = [...prevArr]; 
-        if(arrayIncludesObj(itemObj, prevArr)){
-          return deleteObjFromArray(itemObj, newArr);
+     setItems(prevArr => 
+      prevArr.map(item => {
+        if(item.id === itemObj.id){
+          return {
+            ...item, 
+            inCart: false
+          }
+        } else {
+          return item
         }
-        return newArr;
-    });
+      })
+    )
+  }
+
+  function calculatePrice(quantity, price){
+    return roundTo(quantity * price, 2)
   }
 
   return (
@@ -156,7 +169,7 @@ const Item = ({ itemObj, setItems, setCart, setSavedItems }) => {
               <PackageIcon color={'royalblue'} size={16}/>
               <p>In Stock</p>
             </div>
-            <p className={styles.price} >$ { itemObj.calculatePrice }</p>
+            <p className={styles.price} >$ { calculatePrice(itemObj.quantity, itemObj.price) }</p>
             <div className={styles.quantitySelectionContainer}>
               <span className={styles.weight}>
                 <WeightIcon size={20} color='black'/>

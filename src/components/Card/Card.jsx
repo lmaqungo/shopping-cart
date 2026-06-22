@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 
-const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
+const Card = ({ setSavedItems, itemObj, setItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved);
   const [cartClicked, setCartClicked] = useState(itemObj.inCart);
@@ -67,7 +67,6 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
           }
         })
       )
-      setCart(prevArr => prevArr.filter(item=> item.id !== itemObj.id))
       setCartClicked(false)
     } else {
       setItems(prevArr => 
@@ -82,11 +81,6 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
           }
         })
       )
-      setCart(prevArr => {
-        const arr = [...prevArr]; 
-        arr.push(itemObj); 
-        return arr
-      })
       setCartClicked(true)
     }
   }
@@ -97,7 +91,7 @@ const Card = ({ setSavedItems, setCart, itemObj, setItems }) => {
         <div className={styles.cardOuter}>
             <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
-                <img src={itemObj.img} alt='lego image' width='96px'/>
+                <img src={itemObj.colors['green']} alt='lego image' width='96px'/>
             </div>
             <div className={styles.bottom}>
                 <div className={styles["text"]}>

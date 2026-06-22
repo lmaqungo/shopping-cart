@@ -17,23 +17,27 @@ const Cart = () => {
       setCheckOutClicked(false);
     }, 2000);
 
-    // Cleanup function: Clear the timeout when the component unmounts
-    // or when the dependencies of useEffect change.
+
     return () => {
       clearTimeout(checkoutTimer);
     };
   }, [checkOutClicked]);
 
+  
   const {
-    cart, 
-    setCart, 
+    items, 
     setItems
   } = useOutletContext()
 
+  useEffect(() => {
+    console.log('expecting the items array to change when the quantity is incremented or decremented')
+    console.log(items)
+  }, [items])
+
   const renderCards = ()=> {
-    if(cart.length > 0){
+    if(items.filter(item => item.inCart).length > 0){
       return(
-        cart.map(item => <CartCard itemObj={item} setItems={setItems} setCart={setCart}/>)
+        items.filter(item => item.inCart).map(item => <CartCard key={item.id} itemObj={item} setItems={setItems} />)
       )
     }else{
       return(
@@ -44,8 +48,9 @@ const Cart = () => {
 
   const calculateSubTotal = () => {
     let subTotal = 0; 
-    cart.forEach(item=> {
-      subTotal+= item.calculatePrice
+    items.filter(item => item.inCart).forEach(item=> {
+      const itemPrice = roundTo(item.quantity * item.price, 2)
+      subTotal+= itemPrice
     })
     return roundTo(subTotal, 2)
   }
@@ -61,7 +66,7 @@ const Cart = () => {
 
   function checkoutAnimation(){
     
-    cart.length>0 && setCheckOutClicked(true);
+    items.filter(item => item.inCart).length>0 && setCheckOutClicked(true);
   }
 
   return (
@@ -82,7 +87,7 @@ const Cart = () => {
           <h2>{ `$${total}` }</h2>
           <div className={styles.rowSpan}>
             <p>Subtotal</p>
-            <p>{ `$${subTotal}` }</p>
+            <p>{ `$${calculateSubTotal()}` }</p>
           </div>
           <div className={styles.rowSpan}>
             <p>{`VAT(${VAT_RATE * 100}%)`}</p>
