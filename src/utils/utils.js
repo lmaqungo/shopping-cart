@@ -18,7 +18,7 @@ const intersectionExists = (filters, target)=> {
     if(filters.length>0){
         return filters.every(filter => target.includes(filter))
     }else{
-        return true;
+        return false;
     }
 }
 

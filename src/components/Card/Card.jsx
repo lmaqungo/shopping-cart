@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 
-const Card = ({ setSavedItems, itemObj, setItems }) => {
+const Card = ({ itemObj, setItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved);
   const [cartClicked, setCartClicked] = useState(itemObj.inCart);
@@ -27,7 +27,6 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
             }
           })
         )
-        setSavedItems(prevArr => prevArr.filter(item=> item.id !== itemObj.id))
         setHeartClicked(false)
      } else {
       setItems(prevArr => 
@@ -42,11 +41,6 @@ const Card = ({ setSavedItems, itemObj, setItems }) => {
           }
         })
       )
-      setSavedItems(prevArr => {
-        const arr = [...prevArr]; 
-        arr.push(itemObj); 
-        return arr
-      })
       setHeartClicked(true)
      }
   }

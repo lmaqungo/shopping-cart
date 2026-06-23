@@ -1,7 +1,7 @@
 
 .cardOuter{
     border-radius: 6px;
-    background-color: rgb(232, 232, 232) ;
+    background-color: rgb(245, 245, 245, 1) ;
     padding: 24px;
     display: flex;
     flex-direction: column;

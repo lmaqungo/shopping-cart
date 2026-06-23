@@ -4,7 +4,7 @@ import styles from './item.module.css'
 import { BackIcon, PackageIcon, WeightIcon, HeartIcon } from '../../icons/icons'
 import { roundTo } from '../../utils/utils'
 
-const Item = ({ itemObj, setItems,  setSavedItems }) => {
+const Item = ({ itemObj, setItems }) => {
 
   const [heartClicked, setHeartClicked] = useState(itemObj.isSaved); 
 
@@ -22,9 +22,6 @@ const Item = ({ itemObj, setItems,  setSavedItems }) => {
           }
         })
       )
-      setSavedItems(prevArr => 
-        prevArr.filter(item => item.id!== itemObj.id)
-      )
       setHeartClicked(false)
     } else {
       setItems(prevArr => 
@@ -39,11 +36,6 @@ const Item = ({ itemObj, setItems,  setSavedItems }) => {
           }
         })
       )
-      setSavedItems(prevArr => {
-        const arr = [...prevArr]; 
-        arr.push(itemObj); 
-        return arr
-      })
       setHeartClicked(true)
     }
   }
