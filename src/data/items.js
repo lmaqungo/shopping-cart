@@ -33,7 +33,43 @@ const initialItems =  [
             'yellow': yellow
         },
         price: 7.45
-    })
+    }), 
+    templateItem({
+        id: 1,
+        name: 'Brick 2X4',
+        tags: ['rectangular'], 
+        colors: {
+            'red': red, 
+            'blue': blue, 
+            'green': green, 
+            'yellow': yellow
+        },
+        price: 7.45
+    }),
+    templateItem({
+        id: 2,
+        name: 'Brick 2X4',
+        tags: ['rectangular'], 
+        colors: {
+            'red': red, 
+            'blue': blue, 
+            'green': green, 
+            'yellow': yellow
+        },
+        price: 7.45
+    }), 
+    templateItem({
+        id: 3,
+        name: 'Brick 2X4',
+        tags: ['rectangular'], 
+        colors: {
+            'red': red, 
+            'blue': blue, 
+            'green': green, 
+            'yellow': yellow
+        },
+        price: 7.45
+    }),
 ]; 
 
 

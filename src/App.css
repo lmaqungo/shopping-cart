@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   gap: 48px;
+  position: relative;
 }
 
 header{
@@ -94,4 +95,20 @@ header{
 ::-webkit-scrollbar-thumb{
   background: rgb(121, 121, 121);
   border-radius: 5px;
+}
+
+.burgerMenu{
+  display: none;
+    background-color: red;
+}
+
+@media screen and (max-width: 480px){
+  .body{
+    min-height: 100vh;
+    padding: 24px; 
+  }
+
+  .burgerMenu{
+    display: block;
+  }
 }

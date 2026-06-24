@@ -7,6 +7,7 @@ import TagsMenu from "../TagsMenu/TagsMenu";
 import { intersectionExists } from "../../utils/utils";
 import Item from "../Item/Item";
 import { useParams, useLocation, useOutletContext } from "react-router";
+import BurgerMenu from "../BurgerMenu/BurgerMenu";
 
 const Store = () => {
   
@@ -15,7 +16,9 @@ const Store = () => {
     setItems,
     activeHeart, 
     tags, 
-    setTags
+    setTags, 
+    openMenu, 
+    setOpenMenu
   } = useOutletContext();
 
   
@@ -84,14 +87,24 @@ const Store = () => {
   const renderStoreFront = () => {
     return(
       <div className={styles.body}>
-        <div className={styles.menu}>
-          <Accordion title="Tags" overflow={true}>
+        <div className={styles.standardMenu}>
+          <div className={styles.menu}>
+            <Accordion title="Tags" overflow={true}>
 
-            <TagsMenu tags={tags} setTags={setTags} />
-          </Accordion>
+              <TagsMenu tags={tags} setTags={setTags} />
+            </Accordion>
+          </div>
         </div>
+        <BurgerMenu className={styles.responsiveMenu} openMenu={openMenu} setOpenMenu={setOpenMenu} >
+          <div className={styles.menu}>
+            <Accordion title="Tags" overflow={true}>
+
+              <TagsMenu tags={tags} setTags={setTags} />
+            </Accordion>
+          </div>
+        </BurgerMenu>
         <div className={styles.items}>
-          <h2>{`Items (${calculateLength()})`}</h2>
+          <h2 className={styles.itemsHeader} >{`Items (${calculateLength()})`}</h2>
           {
             tags.filter(tag=>tag.isActive).length > 0 && renderTags()
           }

@@ -1,21 +1,25 @@
 import styles from './header.module.css'
-import { Link } from 'react-router'
+import { Link, useLocation  } from 'react-router'
 import { HeartIcon, CartIcon, SearchIcon} from '../../icons/icons'
 import { useEffect } from 'react'
-import { useLocation } from 'react-router'
+import { BurgerMenuIcon } from '../../icons/icons'
 
 
-const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType }) => {
+const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType, setOpenMenu }) => {
 
   const handleClick = (id) => {
     setActiveType(activeType === id ? "" : id);
   }
 
-  useEffect(()=> {
-    activeType === 'heart' ? setActiveHeart(true) : setActiveHeart(false)
+  function openBurgerMenu(){
+    setOpenMenu(true)
   }
-  , [activeType, activeHeart]
-  )
+
+  if(activeType === 'heart'){
+    setActiveHeart(true)
+  } else {
+    setActiveHeart(false)
+  }
 
   const location = useLocation(); 
   
@@ -23,9 +27,10 @@ const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType }) => {
     <header>
     <div className={styles.section}>
         <Link to="/" className={styles.logo}>
-            <h1 className={styles.logoHeader} ><span className={styles.green} >Brick</span> Depot</h1>
+            <h1 className={styles.logoHeader} ><span className={styles.logoColor} >Brick</span> Depot</h1>
         </Link>
         <nav className={styles.flex}>
+            {location.pathname === "/store" && <BurgerMenuIcon onClick={openBurgerMenu} className={styles.menuIcon} />}
             <Link to='/' className={styles['nav-link']}>Home</Link>
             <Link to='/store' className={styles['nav-link']}>Store</Link>
         </nav>

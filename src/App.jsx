@@ -21,6 +21,8 @@ function App() {
 
   const [activeHeart, setActiveHeart] = useState(false); 
 
+  const [openMenu, setOpenMenu] = useState(false); 
+
   const [items, setItems] = useState(initialItems);
 
   const [savedItems, setSavedItems] = useState([]);
@@ -46,17 +48,19 @@ function App() {
     setCart,
     activeHeart, 
     tags, 
-    setTags
+    setTags, 
+    openMenu, 
+    setOpenMenu
   }
 
 
   return (
-    <div className="body">
-      <Header activeHeart={activeHeart} setActiveHeart={setActiveHeart} activeType={activeType} setActiveType={setActiveType} />
-      <main className={location.pathname === "/" ? "center" : ""}>
-        <Outlet context={contextObj}/>
-      </main>
-    </div>
+      <div className="body">
+        <Header activeHeart={activeHeart} setActiveHeart={setActiveHeart} activeType={activeType} setActiveType={setActiveType} setOpenMenu={setOpenMenu} />
+        <main className={location.pathname === "/" ? "center" : ""}>
+          <Outlet context={contextObj}/>
+        </main>
+      </div>
   )
 }
 

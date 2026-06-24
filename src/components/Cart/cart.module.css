@@ -61,3 +61,15 @@
 .checkout:hover{
     background-color: rgb(20, 66, 204);
 }
+
+@media screen and (max-width: 480px){
+    .mainContent{
+        flex-direction: column;
+        justify-content: start;
+        gap: 48px;  
+    }
+
+    .orderSummary{
+        width: 100%; 
+    }
+}

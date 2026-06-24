@@ -1,5 +1,5 @@
 
-const HeartIcon = ({ number, className, onClick }) => {
+export const HeartIcon = ({ number, className, onClick }) => {
     return(
         <svg onClick={onClick} className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="30" height="30">
             <title>heart-outline</title>
@@ -10,7 +10,7 @@ const HeartIcon = ({ number, className, onClick }) => {
 }
 
 
-const CartIcon = ({ number, className, onClick }) => {
+export const CartIcon = ({ number, className, onClick }) => {
     return(
         <svg onClick={onClick} className={className} xmlns="http://www.w3.org/2000/svg" height="30px" viewBox="0 -960 960 960" width="30px">
             <path d="M240-80q-33 0-56.5-23.5T160-160v-480q0-33 23.5-56.5T240-720h80q0-66 47-113t113-47q66 0 113 47t47 113h80q33 0 56.5 23.5T800-640v480q0 33-23.5 56.5T720-80H240Zm0-80h480v-480h-80v80q0 17-11.5 28.5T600-520q-17 0-28.5-11.5T560-560v-80H400v80q0 17-11.5 28.5T360-520q-17 0-28.5-11.5T320-560v-80h-80v480Zm160-560h160q0-33-23.5-56.5T480-800q-33 0-56.5 23.5T400-720ZM240-160v-480 480Z" />
@@ -20,7 +20,7 @@ const CartIcon = ({ number, className, onClick }) => {
 }
 
 
-const SearchIcon = ({ className }) => {
+export const SearchIcon = ({ className }) => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" className={className}>
             <title>magnify</title>
@@ -29,48 +29,53 @@ const SearchIcon = ({ className }) => {
     )
 }
 
-const DropDownIcon = ( { className } ) => {
+export const DropDownIcon = ( { className } ) => {
     return(
         <svg className={className}  xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" ><path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"/>
         </svg>
     )
 }
 
-const CheckIcon = ({ size }) => {
+export const CheckIcon = ({ size }) => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" fill='white' height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} ><path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/></svg>
     )
 }
 
-const CloseIcon = ({ size, className, handleClose }) => {
+export const CloseIcon = ({ size, className, handleClose }) => {
     return(
         <svg onClick={handleClose} className={className} xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
     )
 } 
 
-const BackIcon = ({ className }) => {
+export const BackIcon = ({ className }) => {
     return(
         <svg className={className} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
     )
 }
 
-const PackageIcon = ({ color, size }) => {
+export const PackageIcon = ({ color, size }) => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} fill={color}><path d="M440-183v-274L200-596v274l240 139Zm80 0 240-139v-274L520-457v274Zm-40-343 237-137-237-137-237 137 237 137ZM160-252q-19-11-29.5-29T120-321v-318q0-22 10.5-40t29.5-29l280-161q19-11 40-11t40 11l280 161q19 11 29.5 29t10.5 40v318q0 22-10.5 40T800-252L520-91q-19 11-40 11t-40-11L160-252Zm320-228Z"/></svg>
     )
 }
 
-const DeleteIcon = ({ size }) => {
+export const DeleteIcon = ({ size }) => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} fill="#EA3323"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
     )
 }
 
-const WeightIcon = ({ size, color }) => {
+export const WeightIcon = ({ size, color }) => {
     return(
         <svg xmlns="http://www.w3.org/2000/svg" height={`${size}px`} viewBox="0 -960 960 960" width={`${size}px`} 
         fill= { color }><path d="M240-200h480l-57-400H297l-57 400Zm240-480q17 0 28.5-11.5T520-720q0-17-11.5-28.5T480-760q-17 0-28.5 11.5T440-720q0 17 11.5 28.5T480-680Zm113 0h70q30 0 52 20t27 49l57 400q5 36-18.5 63.5T720-120H240q-37 0-60.5-27.5T161-211l57-400q5-29 27-49t52-20h70q-3-10-5-19.5t-2-20.5q0-50 35-85t85-35q50 0 85 35t35 85q0 11-2 20.5t-5 19.5ZM240-200h480-480Z"/></svg>
     )
 }
 
-export { HeartIcon, CartIcon, SearchIcon, DropDownIcon, CheckIcon, CloseIcon, BackIcon, PackageIcon, DeleteIcon, WeightIcon }
+export const BurgerMenuIcon = ({ className, onClick }) => {
+    return (
+        <svg className={className} onClick={onClick} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+    )
+}
+

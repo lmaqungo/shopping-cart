@@ -15,7 +15,7 @@ const Cart = () => {
     useEffect(() => {
     const checkoutTimer = setTimeout(() => {
       setCheckOutClicked(false);
-    }, 2000);
+    }, 4000);
 
 
     return () => {
@@ -29,10 +29,7 @@ const Cart = () => {
     setItems
   } = useOutletContext()
 
-  useEffect(() => {
-    console.log('expecting the items array to change when the quantity is incremented or decremented')
-    console.log(items)
-  }, [items])
+
 
   const renderCards = ()=> {
     if(items.filter(item => item.inCart).length > 0){

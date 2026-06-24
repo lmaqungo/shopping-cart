@@ -9,7 +9,7 @@ const Accordion = ({ children, title, overflow=false }) => {
   return (
     <div className={styles.accordion}>
         <div className={styles.upper} onClick={ ()=> isActive ? setIsActive(false) : setIsActive(true) }>
-            <h2>
+            <h2 className={styles.title} >
                 { title }
             </h2>
             <DropDownIcon className={isActive ? styles['flip-dropdown-down'] : styles['flip-dropdown-up'] }/>

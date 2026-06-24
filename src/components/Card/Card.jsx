@@ -83,17 +83,16 @@ const Card = ({ itemObj, setItems }) => {
     <>
       <Link className={styles.removeLinkStyling} to={`${itemObj.id}`}>      
         <div className={styles.cardOuter}>
-            <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
+            <HeartIcon className={`${styles.iconSize} ${itemObj.isSaved ? styles.heartClicked : styles.heart}`} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
-                <img src={itemObj.colors['green']} alt='lego image' width='96px'/>
+                <img className={styles.img} src={itemObj.colors['green']} alt='lego image' width='96px'/>
             </div>
             <div className={styles.bottom}>
                 <div className={styles["text"]}>
-                    <p className={styles.boldText} >{itemObj.name}</p>
-                    <p className={styles.greyText} >{itemObj.type}</p>
-                    <p className={styles.boldText} >{`$${itemObj.price}`}</p>
+                    <p className={styles.infoText} >{itemObj.name}</p>
+                    <p className={styles.infoText} >{`$${itemObj.price}`}</p>
                 </div>
-                <CartIcon className={itemObj.inCart ? styles.cartClicked : styles.cart} onClick={cartClickHandler}/>
+                <CartIcon className={`${styles.iconSize} ${itemObj.inCart ? styles.cartClicked : styles.cart}`} onClick={cartClickHandler}/>
             </div>
         </div>
       </Link>

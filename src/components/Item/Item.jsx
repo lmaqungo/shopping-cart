@@ -143,14 +143,11 @@ const Item = ({ itemObj, setItems }) => {
             <img src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='96px'/>
           </div>
           <div className={styles.bottom}>
-            <div className={styles.filters}>
-              <p className={styles.filterTitle} >Tags:</p>
-              <div className={styles.filterContainer}>
-              {
-                itemObj.tags.map(tag=> <p className={styles.filter} >{tag}</p>
-                )
-              }
-              </div>
+            <div className={styles.filterContainer}>
+            {
+              itemObj.tags.map(tag=> <p className={styles.filter} >{tag}</p>
+              )
+            }
             </div>
           </div>
         </div>
@@ -184,7 +181,7 @@ const Item = ({ itemObj, setItems }) => {
             </select>
           </div>
           <div className={styles.callToActions}>
-              <span>
+              <span style={{width: '100%'}} >
                 <Link style={{display: 'inline' }} to='/cart' >
                   <button className={styles.buyNow} onClick={buyNow}>Buy Now</button>
                 </Link>

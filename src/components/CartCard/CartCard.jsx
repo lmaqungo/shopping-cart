@@ -71,30 +71,30 @@ const CartCard = ({ itemObj, setItems }) => {
           </span>
         </div>
         <div className={styles.rightContainer}>
-            <div className={styles.innerContainer}>
-                <div className={styles.textContent}>
-                    <p>{ itemObj.strain }</p>
-                    <p>{ itemObj.type }</p>
-                    <div className={styles.inStock}>
-                        <PackageIcon color={'royalblue'} size={16}/>
-                        <p style={{color: 'royalblue' }} >In Stock</p>
-                    </div>
-                    <p>{`Weight: ${itemObj.quantity} g`}</p>
-                </div>
+          <div className={styles.innerContainer} >
 
-                <div className={styles.quantitySelection}>
-                              <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
-                              <p>{ itemObj.quantity }</p>
-                              <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
-                </div>
+            <div className={styles.textContent}>
+              <p>{ itemObj.name }</p>
+              <div className={styles.inStock}>
+                  <PackageIcon color={'royalblue'} size={16}/>
+                  <p style={{color: 'royalblue' }} >In Stock</p>
+              </div>
+              <p>{`Weight: ${itemObj.quantity} g`}</p>
+            </div>
 
+            <div className={styles.quantitySelection}>
+              <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
+              <p>{ itemObj.quantity }</p>
+              <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
             </div>
-            <div className={styles.innerContainer}>
-                <button className={styles.deleteBtn} onClick={removeFromCart}>
-                    <DeleteIcon size={18}/>
-                </button>
-                <p>{ `$${calculatePrice(itemObj.quantity, itemObj.price)}` }</p>
-            </div>
+
+            
+            <button className={styles.deleteBtn} onClick={removeFromCart}>
+                <DeleteIcon size={18}/>
+            </button>
+            <p className={styles.price} >{ `$${calculatePrice(itemObj.quantity, itemObj.price)}` }</p>
+          </div>
+            
         </div>
     </div>
   )
