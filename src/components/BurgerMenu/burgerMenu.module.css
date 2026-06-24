@@ -1,0 +1,37 @@
+.burgerMenu{
+    background-color: white;
+    border-right: 1px solid rgb(211, 211, 211);
+    min-height: 100vh;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    width: 60vw;
+    padding: 12px 24px;
+}
+
+.close{
+    display: none
+}
+
+.inner{
+    display: flex; 
+    flex-direction: column;
+    gap: 24px;
+}
+
+.closeIcon{
+    cursor: pointer;
+    fill: black;
+    align-self: end;
+}
+
+.open{
+    display: none;
+}
+
+@media screen and (max-width: 480px){
+    .open{
+        display: block;
+    }
+}
