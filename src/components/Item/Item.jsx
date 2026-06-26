@@ -168,10 +168,11 @@ const Item = ({ itemObj, setItems }) => {
           <div className={styles.colorSelectorContainer} >
             <label htmlFor="color-select">Color</label>
             <select onChange={handleColorSelection} className={styles.colorSelector} name="color" id="color-select">
-              <option selected={itemObj.selectedColor === 'red' ? true : false } value="red">red</option>
-              <option selected={itemObj.selectedColor === 'green' ? true : false } value="green">green</option>
-              <option selected={itemObj.selectedColor === 'blue' ? true : false } value="blue">blue</option>
-              <option selected={itemObj.selectedColor === 'yellow' ? true : false } value="yellow">Yellow</option>
+              {
+                Object.keys(itemObj.colors).map(color => 
+                  <option selected={itemObj.selectedColor === color} value={color} >{color}</option>
+                )
+              }
             </select>
           </div>
           <div className={styles.callToActions}>
