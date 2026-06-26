@@ -8,6 +8,7 @@
 .body{
     composes: columnFlex;
     gap: 24px;
+    
 }
 
 .backButton:hover{
@@ -19,10 +20,12 @@
 .mainContent{
     display: flex;
     justify-content: space-between;
+    
 }
 
 .cart{
     composes: columnFlex; 
+    /* width: 100%; */
     gap: 24px;
 }
 
@@ -62,7 +65,8 @@
     background-color: rgb(20, 66, 204);
 }
 
-@media screen and (max-width: 480px){
+
+@media screen and (max-width: 1024px){
     .mainContent{
         flex-direction: column;
         justify-content: start;
@@ -71,5 +75,12 @@
 
     .orderSummary{
         width: 100%; 
+        gap: 36px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    .orderSummary{
+        gap: 20px;
     }
 }

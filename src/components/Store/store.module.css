@@ -33,33 +33,21 @@
     gap: 24px;
 }
 
-
-
-@media screen and (max-width: 1200px) {
-    .itemGrid{
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media screen and (max-width: 750px) {
-    .itemGrid{
-        display: grid;
-        grid-template-columns: repeat(1, minmax(0, 250px ));
-    }
-}
-
-@media screen and (max-width: 480px){
+@media screen and (max-width: 1024px){
     .standardMenu{
         display: none;
-    }
-
-    .itemsHeader{
-        font-size: 14px;
     }
 
     .itemGrid{
         grid-template-columns: repeat(2, minmax(0, 1fr ));
     }
+}
+
+
+@media screen and (max-width: 480px){
+    .itemsHeader{
+        font-size: 14px;
+    }
+
 
 }

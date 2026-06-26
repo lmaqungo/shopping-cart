@@ -140,7 +140,7 @@ const Item = ({ itemObj, setItems }) => {
         <div className={styles.leftContainer}>
           <div className={styles.imageContainer}>
             <HeartIcon className={itemObj.isSaved ? styles.heartClicked : styles.heart} onClick={heartClickHandler}/>
-            <img src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='96px'/>
+            <img className={styles.objImg} src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='96px'/>
           </div>
           <div className={styles.bottom}>
             <div className={styles.filterContainer}>
@@ -159,16 +159,10 @@ const Item = ({ itemObj, setItems }) => {
               <p>In Stock</p>
             </div>
             <p className={styles.price} >$ { calculatePrice(itemObj.quantity, itemObj.price) }</p>
-            <div className={styles.quantitySelectionContainer}>
-              <span className={styles.weight}>
-                <WeightIcon size={20} color='black'/>
-                <p>(g)</p>
-              </span>
-              <div className={styles.quantitySelection}>
-                <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
-                <p>{ itemObj.quantity }</p>
-                <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
-              </div>
+            <div className={styles.quantitySelection}>
+              <button className={styles.quantityBtn} onClick={decrementQuantity} >-</button>
+              <p>{ itemObj.quantity }</p>
+              <button className={styles.quantityBtn} onClick={incrementQuantity} >+</button>
             </div>
           </div>
           <div className={styles.colorSelectorContainer} >

@@ -27,7 +27,7 @@ const Header = ({ activeHeart, setActiveHeart, activeType, setActiveType, setOpe
     <header>
     <div className={styles.section}>
         <Link to="/" className={styles.logo}>
-            <h1 className={styles.logoHeader} ><span className={styles.logoColor} >Brick</span> Depot</h1>
+            <h1 className={styles.logoHeader} >Bricks</h1>
         </Link>
         <nav className={styles.flex}>
             {location.pathname === "/store" && <BurgerMenuIcon onClick={openBurgerMenu} className={styles.menuIcon} />}

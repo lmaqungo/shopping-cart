@@ -29,13 +29,12 @@
 .rightContainer{
     display: flex;
     align-items: center;
-
 }
 
 .innerContainer{
     display: flex;
-    gap: 48px;
     align-items: center;
+    gap: 48px;
 }
 
 .quantitySelection{
@@ -72,20 +71,24 @@
     grid-area: delete;
 }
 
+.quantity{
+    color: rgb(141, 141, 141);
+}
+
 .price{
     grid-area: price; 
     font-weight: bold;
 }
 
-@media screen and (max-width: 480px){
+@media screen and (max-width: 1024px){
     .innerContainer{
-        display: grid;
+        display: grid; 
+        grid-template-areas: 
+        "text delete"
+        "quantity price";
+        gap: 24px;
         align-items: start;
-        row-gap: 16px;
-        column-gap: 36px;
-        grid-template-areas:        
-            "text delete"
-            "quantity price";
-        grid-auto-flow: max-content;
     }
+
+
 }
