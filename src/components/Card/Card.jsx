@@ -85,7 +85,7 @@ const Card = ({ itemObj, setItems }) => {
         <div className={styles.cardOuter}>
             <HeartIcon className={`${styles.iconSize} ${itemObj.isSaved ? styles.heartClicked : styles.heart}`} onClick={heartClickHandler}/>
             <div className={styles["image-container"]}>
-                <img className={styles.img} src={itemObj.colors['green']} alt='lego image' width='96px'/>
+                <img className={styles.img} src={itemObj.colors['yellow']} alt='lego image' width='96px'/>
             </div>
             <div className={styles.bottom}>
                 <div className={styles["text"]}>

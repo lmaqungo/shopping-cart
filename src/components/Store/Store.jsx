@@ -38,7 +38,7 @@ const Store = () => {
     return(
       <div className={styles.tags}>
         {
-          tags.map( tag => <FilterTag tag={tag} setTags={setTags} />)
+          tags.filter(tag=> tag.isActive).map( tag => <FilterTag tag={tag} setTags={setTags} />)
         }
       </div>
     )
