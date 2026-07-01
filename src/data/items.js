@@ -108,7 +108,7 @@ const initialItems =  [
             'black': brick2x4Black, 
             'white': brick2x4White
         },
-        price: 7.45
+        price: 0.24
     }),
     templateItem({
         id: 1,
@@ -122,7 +122,7 @@ const initialItems =  [
             'black': brick2x2Black, 
             'white': brick2x2White
         },
-        price: 7.45
+        price: 0.15
     }),
     templateItem({
         id: 2,
@@ -136,7 +136,7 @@ const initialItems =  [
             'black': brick1x1Black, 
             'white': brick1x1White
         },
-        price: 7.45
+        price: 0.09
     }),
     templateItem({
         id: 3,
@@ -150,7 +150,7 @@ const initialItems =  [
             'black': brick1x2Black, 
             'white': brick1x2White
         },
-        price: 7.45
+        price: 0.12
     }),
     templateItem({
         id: 4,
@@ -164,7 +164,7 @@ const initialItems =  [
             'black': brick1x4Black, 
             'white': brick1x4White
         },
-        price: 7.45
+        price: 0.17
     }),
     templateItem({
         id: 5,
@@ -178,7 +178,7 @@ const initialItems =  [
             'black': plate1x2Black, 
             'white': plate1x2White
         },
-        price: 7.45
+        price: 0.11
     }),
     templateItem({
         id: 6,
@@ -192,7 +192,7 @@ const initialItems =  [
             'black': plate1x4Black, 
             'white': plate1x4White
         },
-        price: 7.45
+        price: 0.12
     }),
     templateItem({
         id: 7,
@@ -206,7 +206,7 @@ const initialItems =  [
             'black': plate2x4Black, 
             'white': plate2x4White
         },
-        price: 7.45
+        price: 0.16
     }),
     templateItem({
         id: 8,
@@ -220,7 +220,7 @@ const initialItems =  [
             'white': roofTile1x2White,
             'yellow': roofTile1x2Yellow, 
         },
-        price: 7.45
+        price: 0.11
     }),
     templateItem({
         id: 9,
@@ -234,7 +234,7 @@ const initialItems =  [
             'white': roofTile2x2White,
             'yellow': roofTile2x2Yellow, 
         },
-        price: 7.45
+        price: 0.11
     }),
     templateItem({
         id: 10,
@@ -248,7 +248,7 @@ const initialItems =  [
             'white': rounded1x1White,
             'yellow': rounded1x1Yellow, 
         },
-        price: 7.45
+        price: 0.09
     }),
     templateItem({
         id: 11,
@@ -262,7 +262,7 @@ const initialItems =  [
             'white': roundedPlate1x1White,
             'yellow': roundedPlate1x1Yellow, 
         },
-        price: 7.45
+        price: 0.06
     }),
     
 ]; 
