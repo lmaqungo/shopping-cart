@@ -1,7 +1,12 @@
 import styles from './home.module.css'
 import { Link } from 'react-router'
+import Carousel from '../Carousel/Carousel'
+import { useOutletContext } from 'react-router'
 
 const Home = () => {
+
+  const { items } = useOutletContext();
+
   return (
       <div className={styles.main}>
           <h1 className={styles.header} >Welcome to Bricks</h1>
@@ -11,6 +16,7 @@ const Home = () => {
                 <button className={styles.shopBtn}>Shop Now</button>
             </Link>
           </span>
+          <Carousel items={items} />
       </div>
   )
 }

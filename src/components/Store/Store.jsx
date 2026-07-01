@@ -1,7 +1,6 @@
 import Accordion from "../Accordion/Accordion"
 import styles from './store.module.css'
 import Card from "../Card/Card";
-import { useEffect, useState } from "react";
 import FilterTag from "../FilterTag/FilterTag";
 import TagsMenu from "../TagsMenu/TagsMenu";
 import { intersectionExists } from "../../utils/utils";

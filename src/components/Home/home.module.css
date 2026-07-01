@@ -1,9 +1,10 @@
 .main{
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 60px;
   text-align: center;
-  width: 60%;
+  width: 100%;
+  align-items: center;
 }
 
 .center{
@@ -42,11 +43,3 @@
   font-size: 42px;
 }
 
-@media screen and (max-width: 480px){
-
-  .main{
-    width: 100%;
-    gap: 60px;
-  }
-
-}

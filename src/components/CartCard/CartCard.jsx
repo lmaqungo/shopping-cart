@@ -65,7 +65,7 @@ const CartCard = ({ itemObj, setItems }) => {
           <span>
             <Link style={{display: 'inline' }} to={`/store/${itemObj.id}`}>
               <div className={styles.imageContainer}>
-                  <img src={itemObj.colors[itemObj.selectedColor]} alt='weed image' width='48px'/>
+                  <img src={itemObj.colors[itemObj.selectedColor]} alt='item image' width='48px'/>
               </div>
             </Link>
           </span>
