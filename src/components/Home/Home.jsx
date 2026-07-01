@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
       <div className={styles.main}>
-          <h1 className={styles.header} >Welcome to Bricks</h1>
+          <h1 className={styles.header} >Welcome to Brick & Order</h1>
           <p className={styles.body} >Discover our selection of replacement bricks to finally complete your creations!</p>
           <span>
             <Link to='/store'>
