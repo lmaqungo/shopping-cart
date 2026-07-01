@@ -4,7 +4,7 @@ import styles from './accordion.module.css';
 
 const Accordion = ({ children, title, overflow=false }) => {
 
-    const [isActive, setIsActive] = useState(false);
+    const [isActive, setIsActive] = useState(true);
 
   return (
     <div className={styles.accordion}>

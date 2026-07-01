@@ -82,17 +82,17 @@ import roundedPlate1x1Red from '../assets/rounded-plate-1x1/red.png'
 import roundedPlate1x1White from '../assets/rounded-plate-1x1/white.png'
 import roundedPlate1x1Yellow from '../assets/rounded-plate-1x1/yellow.png'
 
-  const templateItem = ({ id, name, tags, price=2.5, colors, isAvailable=true }) => ({
+  const templateItem = ({ id, name, tags, price=2.5, colors, isSaved=false, inCart=false, quantity=1 }) => ({
     id: id, 
     name: name, 
     tags: tags, 
     selectedColor: 'yellow', 
     colors: colors, 
-    quantity: 1,
+    quantity: quantity,
     price: price,
-    isSaved: false, 
-    inCart: false, 
-    isAvailable: isAvailable
+    isSaved: isSaved, 
+    inCart: inCart, 
+    isAvailable: true
   });
 
 const initialItems =  [
@@ -108,6 +108,8 @@ const initialItems =  [
             'black': brick2x4Black, 
             'white': brick2x4White
         },
+        inCart: true, 
+        quantity: 4,
         price: 0.24
     }),
     templateItem({
@@ -178,7 +180,8 @@ const initialItems =  [
             'black': plate1x2Black, 
             'white': plate1x2White
         },
-        price: 0.11
+        price: 0.11, 
+        isSaved: true,
     }),
     templateItem({
         id: 6,
@@ -206,6 +209,8 @@ const initialItems =  [
             'black': plate2x4Black, 
             'white': plate2x4White
         },
+        inCart: true, 
+        quantity: 3, 
         price: 0.16
     }),
     templateItem({
@@ -248,7 +253,8 @@ const initialItems =  [
             'white': rounded1x1White,
             'yellow': rounded1x1Yellow, 
         },
-        price: 0.09
+        price: 0.09, 
+        isSaved: true
     }),
     templateItem({
         id: 11,

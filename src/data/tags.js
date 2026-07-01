@@ -2,7 +2,7 @@ const tags = [
     {
       id: 1, 
       title: 'rectangular', 
-      isActive: false
+      isActive: true
     }, 
     {
       id: 2, 
