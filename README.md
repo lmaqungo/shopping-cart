@@ -1,12 +1,28 @@
-# Green Finger
+# Brick & Order
 
-Online marijuana dispensary stocked with the most potent produce. 100% organic, grown with love.
+Brick & Order is a React e-commerce single-page application for purchasing individual Lego pieces. The app is fully responsive and structured around four client-side routes: a Home page, a Shop page, an Item page (rendered dynamically per item via an item id), and a Cart page.
+
+Each item in the store is modeled as an object carrying its cart state, saved state, and associated tags — keeping the data layer flat and predictable across the application.
+
+## [Live Site](https://bricks-top.netlify.app/)
+
+
+## Demo 
+
+<p align='center' >
+    <img src='./public/desktop-demo.png' width='900px' />
+</p>
+
+<p align='center' >
+    <img src='./public/mobile-demo.png' width='200px' />
+</p>
 
 ## Features
 
-Add to cart  
-Apply filters to aid product selection  
-Save items for future shopping sessions
+- Item filtering by tags
+- Add to cart or favourite next purchases
+- Smooth and performant  
+
 
 ## Tech stack
 
@@ -21,10 +37,7 @@ npm install
 npm run dev
 ```
 
-## Demo
-
-![demo image](/public/demo.png)
-
 ## Acknowledgement
 
-Design inspiration: [amadeuio](https://github.com/amadeuio)
+- Icons and fonts: [Google fonts](https://fonts.google.com/)
+- Design inspiration: [Lego](https://www.lego.com/en-us/pick-and-build/pick-a-brick)
