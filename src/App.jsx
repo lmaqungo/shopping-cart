@@ -1,33 +1,11 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import './App.css'
 import Header from './components/Header/Header'
 import { Outlet, useLocation } from 'react-router'
 import initialItems from './data/items'
+import initialTags from './data/tags'
 
 function App() {
-
-  const initialTags = [
-    {
-      id: 1, 
-      title: 'rectangular', 
-      isActive: false
-    }, 
-    {
-      id: 2, 
-      title: 'plate', 
-      isActive: false
-    }, 
-    {
-      id: 3, 
-      title: 'rounded', 
-      isActive: false
-    }, 
-    {
-      id: 4, 
-      title: 'triangular', 
-      isActive: false
-    }, 
-  ]
 
   const location = useLocation(); 
   const [tags, setTags] = useState(initialTags); 
@@ -43,17 +21,6 @@ function App() {
   const [savedItems, setSavedItems] = useState([]);
   const [cart, setCart] = useState([]);
 
-  const [error, setError] = useState(null);
-
-  useEffect(()=> {
-    window.addEventListener('error', (e)=> setError(e.error)); 
-    window.addEventListener('unhandledrejection', (e) => setError(e.reason))
-  }, [])
-
-    if(error) return <div>Something broke. check console</div> 
-
-
-
   const contextObj = {
     items, 
     setItems, 
@@ -67,7 +34,6 @@ function App() {
     openMenu, 
     setOpenMenu
   }
-
 
   return (
       <div className="body">
