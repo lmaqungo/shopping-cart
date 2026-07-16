@@ -71,6 +71,12 @@
     color: slategray;
 }
 
+.colorBox{
+    width: 24px; 
+    height: 24px; 
+    border: 2px solid black; 
+    border-radius: 2px;
+}
 
 
 .cart{
@@ -114,6 +120,13 @@
     }
 }
 
+@media screen and (max-width: 600px){
+    .colorBox{
+        width: 16px; 
+        height: 16px; 
+    }
+}
+
 
 @media screen and (max-width: 480px){
     .cardOuter{
@@ -141,6 +154,7 @@
         width: 22px; 
         height: 22px;
     }
+
 }
 
 

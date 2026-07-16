@@ -3,7 +3,13 @@ import styles from './card.module.css'
 import { CartIcon, HeartIcon } from '../../icons/icons'
 import { Link } from 'react-router'
 import { useState } from 'react'
-import { useEffect } from 'react'
+
+
+function ColorBox({ color }){
+  return (
+    <span style={{backgroundColor:`${color}`}} className={styles.colorBox} ></span>
+  )
+}
 
 
 const Card = ({ itemObj, setItems }) => {
@@ -79,6 +85,30 @@ const Card = ({ itemObj, setItems }) => {
     }
   }
 
+  function renderColorBoxes(){
+    let boxesRendered = 0;
+    return (
+      <div style={{display: 'flex', alignItems: 'center', gap: '4px'}} >
+        <div style={{display: 'flex', gap: '4px'}} >
+          { 
+            Object.keys(itemObj.colors).sort().reverse().map((color, index) => {
+              if(index < 4) {
+                boxesRendered++
+                return <ColorBox color={color} />
+              }
+            }   
+          )
+          }
+        </div>
+        <p>
+          {
+            `(${Object.keys(itemObj.colors).length - boxesRendered})`
+          }
+        </p>
+      </div>
+    )
+  }
+
   return (
     <>
       <Link className={styles.removeLinkStyling} to={`${itemObj.id}`}>      
@@ -90,6 +120,7 @@ const Card = ({ itemObj, setItems }) => {
             <div className={styles.bottom}>
                 <div className={styles["text"]}>
                     <p className={styles.infoText} >{itemObj.name}</p>
+                    {renderColorBoxes()}
                     <p className={styles.infoText} >{`$${itemObj.price}`}</p>
                 </div>
                 <CartIcon className={`${styles.iconSize} ${itemObj.inCart ? styles.cartClicked : styles.cart}`} onClick={cartClickHandler}/>
