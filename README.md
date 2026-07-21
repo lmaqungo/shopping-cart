@@ -10,11 +10,11 @@ Each item in the store is modeled as an object carrying its cart state, saved st
 ## Demo 
 
 <p align='center' >
-    <img src='./public/desktop-demo.png' width='900px' />
+    <img src='./public/desktop.png' width='900px' />
 </p>
 
 <p align='center' >
-    <img src='./public/mobile-demo.png' width='200px' />
+    <img src='./public/mobile.png' width='200px' />
 </p>
 
 ## Features
